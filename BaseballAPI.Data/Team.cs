@@ -162,7 +162,7 @@ namespace BaseballAPI.Data
         public int Wins { get; set; }
         public int Losses { get; set; }
         public virtual List<Player> Players { get; set; } = new List<Player>();
-        public virtual List<Game> Games { get; set; } = new List<Game>();
+        public virtual List<GameInfo> Games { get; set; } = new List<GameInfo>();
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
         public Team (int teamId, TeamName name, TeamLocation location, TeamStadium stadium, TeamMascot mascot, int wins, int losses, List<Player> player, Guid ownerId)

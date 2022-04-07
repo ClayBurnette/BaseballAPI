@@ -31,7 +31,6 @@ namespace BaseballAPI.Data
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Baseball> Baseballs { get; set; }Team
         public DbSet<Team> Teams { get; set; }
 
 
