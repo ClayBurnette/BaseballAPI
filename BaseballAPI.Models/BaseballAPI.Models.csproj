@@ -75,10 +75,18 @@
     <Compile Include="GameInfoModel\GameEdit.cs" />
     <Compile Include="GameInfoModel\GameListAll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamCreate.cs" />
+    <Compile Include="TeamListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseballAPI.Data\BaseballAPI.Data.csproj">
+      <Project>{EADF9A56-ECC2-4C7B-86F8-8513723FF695}</Project>
+      <Name>BaseballAPI.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
