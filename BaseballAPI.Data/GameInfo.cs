@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +13,13 @@ namespace BaseballAPI.Data
         [Key]
         public int Id { get; set; }
 
-        [Required]
-
+        [ForeignKey(nameof(HomeTeam))]
         public int TeamId1 { get; set; }
+        public virtual Team HomeTeam { get; set; }
 
-        [Required]
+        [ForeignKey(nameof(AwayTeam))]
         public int TeamId2 { get; set; }
+        public virtual Team AwayTeam { get; set; }
 
         [Required]
         public int HomeScore { get; set; }
@@ -27,31 +30,18 @@ namespace BaseballAPI.Data
         [Required]
         public double Innings { get; set; }
 
-        
-
         [Required]
         public int SeasonYear { get; set; }
 
-        
-
-       
-        
-        
-        public bool ExtraInings
+        public bool ExtraInnings
         {
-           if(Innings > 9) 
-            return true;
+            get
+            {
+                if (Innings > 9)
+                    return true;
+                return false;
+            }
 
         }
-
-        
-
-
-
-
-
-
-
-
     }
 }
