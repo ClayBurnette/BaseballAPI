@@ -36,6 +36,7 @@ namespace BaseballAPI.Data
         public DbSet<Player> Players { get; set; } 
 
         public DbSet<GameBattingStats> GameBattingStats { get; set; }
+        public DbSet<GameInfo> Games { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
