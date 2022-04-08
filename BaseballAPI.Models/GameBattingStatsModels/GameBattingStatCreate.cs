@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BaseballAPI.Data
+namespace BaseballAPI.Models.GameBattingStatsModels
 {
-    public class GameBattingStats
+    public class GameBattingStatCreate
     {
-        [Key]
-        public int Id { get; set; }
-        [ForeignKey(nameof(Player))]
+        [Required]
         public int PlayerId { get; set; }
-        public virtual Player Player { get; set; }
-        [ForeignKey(nameof(Game))]
+        [Required]
         public int GameId { get; set; }
-        public virtual GameInfo Game { get; set; }
         [Required]
         public int AB { get; set; }
         [Required]
@@ -28,20 +23,6 @@ namespace BaseballAPI.Data
         public int RBI { get; set; }
         [Required]
         public int BB { get; set; }
-        public int PA
-        {
-            get
-            {
-                return AB + SAC + HBP;
-            }
-        }
-        public int TB
-        {
-            get
-            {
-                return H + (2 * Double) + (3 * Triple) + (4 * HR);
-            }
-        }
         [Required]
         public int SO { get; set; }
         [Required]
@@ -60,8 +41,7 @@ namespace BaseballAPI.Data
         public int SB { get; set; }
         [Required]
         public int CS { get; set; }
-        public GameBattingStats() { }
-        public GameBattingStats(int playerId, int gameId, int ab, int r, int h, int rbi, int bb, int so, int hr, int doub, int trip, int sac, int hbp, int sb, int cs)
+        public GameBattingStatCreate(int playerId, int gameId, int ab, int r, int h, int rbi, int bb, int so, int hr, int doub, int trip, int sac, int hbp, int sb, int cs)
         {
             PlayerId = playerId;
             GameId = gameId;
