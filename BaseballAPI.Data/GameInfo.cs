@@ -22,9 +22,11 @@ namespace BaseballAPI.Data
         public virtual Team AwayTeam { get; set; }
 
         [Required]
+        [Range(0, int.MaxValue) ]
         public int HomeScore { get; set; }
 
         [Required]
+        [Range(0, int.MaxValue) ]
         public int AwayScore { get; set; }
 
         [Required]
