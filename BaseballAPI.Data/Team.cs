@@ -147,35 +147,20 @@ namespace BaseballAPI.Data
         [Required]
         public Guid OwnerId { get; set; }
         [Required]
-        public TeamName Name { get; set; }
         public string TeamName { get; set; }
-        public string TeamMascot { get; set; }
+        [Required]
         public string TeamLocation { get; set; }
+        public string TeamMascot { get; set; }
         public string TeamStadium { get; set; }
-        [Required]
-        public TeamLocation Location { get; set; }
-        [Required]
-        public TeamMascot Mascot { get; set; }
-        [Required]
-        public TeamStadium Stadium { get; set; }
-        public List<Player> Player { get; set; }
         public int Wins { get; set; }
         public int Losses { get; set; }
+        public TeamName Name { get; set; }
+        public TeamLocation Location { get; set; }
+        public TeamMascot Mascot { get; set; }
+        public TeamStadium Stadium { get; set; }
         public virtual List<Player> Players { get; set; } = new List<Player>();
         public virtual List<GameInfo> Games { get; set; } = new List<GameInfo>();
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
-        public Team (int teamId, TeamName name, TeamLocation location, TeamStadium stadium, TeamMascot mascot, int wins, int losses, List<Player> player, Guid ownerId)
-        {
-            TeamId = teamId;
-            Name = name;
-            Location = location;
-            Stadium = stadium;
-            Mascot = mascot;
-            Wins = wins;
-            Losses = losses;
-            Player = player;
-            OwnerId = ownerId;
-        }
     }
 }
