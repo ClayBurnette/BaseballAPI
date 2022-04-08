@@ -28,20 +28,56 @@ namespace BaseballAPI.Data
         public int RBI { get; set; }
         [Required]
         public int BB { get; set; }
-        [Required]
-        public int PA { get; set; }
-        [Required]
-        public int TB { get; set; }
+        public int PA
+        {
+            get
+            {
+                return AB + SAC + HBP;
+            }
+        }
+        public int TB
+        {
+            get
+            {
+                return H + (2 * Double) + (3 * Triple) + (4 * HR);
+            }
+        }
         [Required]
         public int SO { get; set; }
+        [Required]
         public int HR { get; set; }
+        [Required]
         [Display(Name = "2B")]
         public int Double { get; set; }
+        [Required]
         [Display(Name = "3B")]
         public int Triple { get; set; }
+        [Required]
         public int SAC { get; set; }
+        [Required]
         public int HBP { get; set; }
+        [Required]
         public int SB { get; set; }
+        [Required]
         public int CS { get; set; }
+        public GameBattingStats() { }
+        public GameBattingStats(int playerId, int gameId, int ab, int r, int h, int rbi, int bb, int so, int hr, int doub, int trip, int sac, int hbp, int sb, int cs)
+        {
+            PlayerId = playerId;
+            GameId = gameId;
+            AB = ab;
+            R = r;
+            H = h;
+            RBI = rbi;
+            BB = bb;
+            SO = so;
+            HR = hr;
+            Double = doub;
+            Triple = trip;
+            SAC = sac;
+            HBP = hbp;
+            SB = sb;
+            CS = cs;
+        }
     }
 }
