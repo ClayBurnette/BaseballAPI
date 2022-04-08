@@ -23,6 +23,7 @@ namespace BaseballAPI.Models.PlayerModels
         public string HomeTown { get; set; }
         [Required]
         public DateTime DateOfBirth { get; set; }
+        public int PlayerPostition { get; set; }
         public int TeamId { get; set; }
     }
 }
