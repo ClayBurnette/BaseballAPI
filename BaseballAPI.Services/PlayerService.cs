@@ -79,5 +79,14 @@ namespace BaseballAPI.Services
 
             }
         }
+        public bool DeletePlayer(int playerId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Players.Single(e => e.PlayerId == playerId && e.OwnerId == _userId);
+                ctx.Players.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
