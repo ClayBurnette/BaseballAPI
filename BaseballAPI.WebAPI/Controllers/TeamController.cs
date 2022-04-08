@@ -1,4 +1,5 @@
 ﻿using BaseballAPI.Models;
+using BaseballAPI.Models.TeamModels;
 using BaseballAPI.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -16,10 +17,16 @@ namespace BaseballAPI.WebAPI.Controllers
         public IHttpActionResult Get()
         {
             TeamService teamService = CreateTeamService();
-            var teams = teamService.GetTeamListsItem();
+            var teams = teamService.GetTeams();
             return Ok(teams);
         }
-        public IHttpActionResult Post (TeamCreate team)
+        public IHttpActionResult Get(int id)
+        {
+            TeamService teamService = CreateTeamService();
+            var teams = teamService.GetTeamById(id);
+            return Ok(teams);
+        }
+        public IHttpActionResult Post(TeamCreate team)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -27,6 +34,27 @@ namespace BaseballAPI.WebAPI.Controllers
             var service = CreateTeamService();
 
             if (!service.CreateTeam(team))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Put(TeamEdit team)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateTeamService();
+
+            if (!service.UpdateTeam(team))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateTeamService();
+
+            if (!service.DeleteTeam(id))
                 return InternalServerError();
 
             return Ok();
