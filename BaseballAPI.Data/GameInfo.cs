@@ -33,6 +33,8 @@ namespace BaseballAPI.Data
         [Required]
         public int SeasonYear { get; set; }
 
+        
+
         public bool ExtraInnings
         {
             get
