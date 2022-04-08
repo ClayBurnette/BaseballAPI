@@ -8,7 +8,7 @@ namespace BaseballAPI.Models.GameInfoModel
 {
     public class GameDetail
     {
-        public int Id { get; set; }
+        public int GameId { get; set; }
         public int TeamId1 { get; set; }
 
         public int TeamId2 { get; set; }
