@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseballAPI.Models.PlayerModels
 {
-    internal class PlayerListItem
+    public class PlayerListItem
     {
     }
 }
