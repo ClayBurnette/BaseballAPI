@@ -16,7 +16,7 @@ namespace BaseballAPI.Data
         [Required]
         public string Name { get; set; }
         [Required]
-        public DateTimeOffset DateTimeOffset { get; set; }
+        public DateTime DateOfBirth { get; set; }
         [Required]
         public string School { get; set; }
         [Required]
@@ -29,7 +29,7 @@ namespace BaseballAPI.Data
         [ForeignKey(nameof(Team))]
         public int TeamId { get; set; }
         public virtual Team Team { get; set; }
-        public virtual List<GameBattingStats> Stats { get; set; }
+        
 
         /*public Player (int position, List<int> pos2)
         {

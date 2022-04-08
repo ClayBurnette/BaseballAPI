@@ -74,6 +74,10 @@
     <Compile Include="GameInfoModel\GameDetail.cs" />
     <Compile Include="GameInfoModel\GameEdit.cs" />
     <Compile Include="GameInfoModel\GameListAll.cs" />
+    <Compile Include="PlayerModels\PlayerCreate.cs" />
+    <Compile Include="PlayerModels\PlayerDetail.cs" />
+    <Compile Include="PlayerModels\PLayerEdit.cs" />
+    <Compile Include="PlayerModels\PlayerListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamModels\TeamCreate.cs" />
     <Compile Include="TeamModels\TeamListItem.cs" />
