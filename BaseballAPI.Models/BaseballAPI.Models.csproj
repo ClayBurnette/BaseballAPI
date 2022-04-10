@@ -69,10 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameBattingStatsModels\GameBattingStatCreate.cs" />
-    <Compile Include="GameBattingStatsModels\GameBattingStatDetail.cs" />
-    <Compile Include="GameBattingStatsModels\GameBattingStatEdit.cs" />
-    <Compile Include="GameBattingStatsModels\GameBattingStatListItem.cs" />
+    <Compile Include="GameBattingStatModels\GameBattingStatCreate.cs" />
+    <Compile Include="GameBattingStatModels\GameBattingStatDetail.cs" />
+    <Compile Include="GameBattingStatModels\GameBattingStatEdit.cs" />
+    <Compile Include="GameBattingStatModels\GameBattingStatListItem.cs" />
     <Compile Include="GameInfoModel\GameCreate.cs" />
     <Compile Include="GameInfoModel\GameDelete.cs" />
     <Compile Include="GameInfoModel\GameDetail.cs" />
