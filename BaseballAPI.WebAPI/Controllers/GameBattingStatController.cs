@@ -20,16 +20,16 @@ namespace BaseballAPI.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-        /*public IHttpActionResult Post(string allStats)
+        public IHttpActionResult Post(string allStats)
         {
             string[] statArray = allStats.Split('/');
             if (statArray.Length != 15)
                 return BadRequest("Requires 15 int inputs");
             var service = new GameBattingStatService();
-            if (!service.CreateGameBattingStat(allStats))
+            if (!service.CreateGameBattingStatXtreme(statArray))
                 return InternalServerError();
             return Ok();
-        }*/
+        }
         public IHttpActionResult Get()
         {
             var service = new GameBattingStatService();
