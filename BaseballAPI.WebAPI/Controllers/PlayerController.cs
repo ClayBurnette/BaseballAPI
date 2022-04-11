@@ -17,15 +17,15 @@ namespace BaseballAPI.WebAPI.Controllers
         private PlayerService CreatePlayerService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var noteService = new PlayerService(userId);
-            return noteService;
+            var playerService = new PlayerService(userId);
+            return playerService;
         }
         //Get All
         public IHttpActionResult Get()
         {
-            PlayerService noteService = CreatePlayerService();
-            var notes = noteService.GetPlayers();
-            return Ok(notes);
+            PlayerService playerService = CreatePlayerService();
+            var player = playerService.GetPlayers();
+            return Ok(player);
         }
         //Post
         public IHttpActionResult Post(PlayerCreate player)
@@ -45,14 +45,16 @@ namespace BaseballAPI.WebAPI.Controllers
         //Get By Id
         public IHttpActionResult Get(int id)
         {
-            PlayerService noteService = CreatePlayerService();
-            var note = noteService.GetPlayerById(id);
-            return Ok(note);
+            PlayerService playerService = CreatePlayerService();
+            var player = playerService.GetPlayerById(id);
+            return Ok(player);
         }
         //Get By Position
-        public IHttpActionResult GetByPosition((Position,int)positionNum)
+        public IHttpActionResult GetByPosition(int positionNum)
         {
-
+            PlayerService playerService = CreatePlayerService();
+            var player = playerService.GetPlayerByPosition(positionNum);
+            return Ok(player);
         }
         //Put
         public IHttpActionResult Put(PlayerEdit player)

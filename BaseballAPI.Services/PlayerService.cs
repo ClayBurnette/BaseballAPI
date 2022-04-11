@@ -43,7 +43,8 @@ namespace BaseballAPI.Services
                     PlayerId = e.PlayerId,
                     Name = e.Name,
                     JeseryNumber = e.JeseryNumber,
-                    TeamId = e.TeamId
+                    TeamId = e.TeamId,
+                    PlayerPosition = (int)e.PlayerPosition
                 }
                 );
                 return query.ToArray();
@@ -65,6 +66,22 @@ namespace BaseballAPI.Services
                         DateOfBirth = entity.DateOfBirth,
                         PlayerPosition = (int)entity.PlayerPosition
                     };
+            }
+        }
+        public IEnumerable<PlayerListItem> GetPlayerByPosition(int enumNum)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Players.Where(e => e.PlayerPosition == (Position)enumNum && e.OwnerId == _userId).Select(e => new PlayerListItem
+                {
+                    PlayerId = e.PlayerId,
+                    Name = e.Name,
+                    JeseryNumber = e.JeseryNumber,
+                    TeamId = e.TeamId,
+                    PlayerPosition = (int)e.PlayerPosition
+                }
+                );
+                return query.ToArray();
             }
         }
         public bool UpdatePlayer(PlayerEdit model)
