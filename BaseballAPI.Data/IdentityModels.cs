@@ -51,11 +51,13 @@ namespace BaseballAPI.Data
                 .HasOptional<Team>(g => g.AwayTeam)
                 .WithMany()
                 .WillCascadeOnDelete(false);
-            
+            modelBuilder.Entity<Player>()
+                .HasOptional<Team>(t => t.Team)
+                .WithMany()
+                .WillCascadeOnDelete(false);
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
-
             modelBuilder
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
