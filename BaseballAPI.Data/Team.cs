@@ -283,7 +283,7 @@ namespace BaseballAPI.Data
         public int PlayerId { get; set; }
         public virtual Player Player { get; set; }
         public virtual List<Player> Players { get; set; } = new List<Player>();
-        [ForeignKey(nameof(GameInfo))]
+        [ForeignKey(nameof(Game))]
         public int GameId { get; set; }
         public virtual GameInfo Game { get; set; }
         public virtual List<GameInfo> Games { get; set; } = new List<GameInfo>();
