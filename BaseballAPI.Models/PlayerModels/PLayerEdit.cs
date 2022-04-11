@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseballAPI.Models.PlayerModels
 {
-    public class PLayerEdit
+    public class PlayerEdit
     {
         public int PlayerId { get; set; }
         public string Name { get; set; }
