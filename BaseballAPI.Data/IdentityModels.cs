@@ -35,6 +35,14 @@ namespace BaseballAPI.Data
         public DbSet<GameInfo> Games { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<GameBattingStat>()
+                .HasOptional<Player>(p => p.Player)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<GameBattingStat>()
+                .HasOptional<GameInfo>(g => g.Game)
+                .WithMany()
+                .WillCascadeOnDelete(false);
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
