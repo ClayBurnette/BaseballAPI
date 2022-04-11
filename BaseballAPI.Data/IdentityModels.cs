@@ -43,6 +43,15 @@ namespace BaseballAPI.Data
                 .HasOptional<GameInfo>(g => g.Game)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+            modelBuilder.Entity<GameInfo>()
+                .HasOptional<Team>(g => g.HomeTeam)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<GameInfo>()
+                .HasOptional<Team>(g => g.AwayTeam)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+            
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
