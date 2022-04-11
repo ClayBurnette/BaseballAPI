@@ -19,6 +19,16 @@ namespace BaseballAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool CreateGameBattingStatXtreme(string[] allStats)
+        {
+            GameBattingStatCreate model = new GameBattingStatCreate(allStats);
+            GameBattingStat entity = new GameBattingStat(model.PlayerId, model.GameId, model.AB, model.R, model.H, model.RBI, model.BB, model.SO, model.HR, model.Double, model.Triple, model.SAC, model.HBP, model.SB, model.CS);
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.GameBattingStats.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
         public IEnumerable<GameBattingStatListItem> GetAllGameBattingStats()
         {
             using (var ctx = new ApplicationDbContext())
