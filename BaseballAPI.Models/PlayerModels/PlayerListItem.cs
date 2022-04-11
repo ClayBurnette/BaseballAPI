@@ -12,5 +12,6 @@ namespace BaseballAPI.Models.PlayerModels
         public string Name { get; set; }
         public int JeseryNumber { get; set; }
         public int TeamId { get; set; }
+        public int PlayerPosition { get; set; }
     }
 }
