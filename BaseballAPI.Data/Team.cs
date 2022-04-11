@@ -214,7 +214,7 @@ namespace BaseballAPI.Data
         GreatAmericanBallPark = 7,
         [Display(Name = "Progressive Field")]
         ProgressiveField = 8,
-        [Display(Name = "Coors field")]
+        [Display(Name = "Coors Field")]
         CoorsField = 9,
         [Display(Name = "Comerica Park")]
         ComericaPark = 10,
