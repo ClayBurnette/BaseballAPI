@@ -20,26 +20,36 @@ namespace BaseballAPI.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
+        /*public IHttpActionResult Post(string allStats)
+        {
+            string[] statArray = allStats.Split('/');
+            if (statArray.Length != 15)
+                return BadRequest("Requires 15 int inputs");
+            var service = new GameBattingStatService();
+            if (!service.CreateGameBattingStat(allStats))
+                return InternalServerError();
+            return Ok();
+        }*/
         public IHttpActionResult Get()
         {
             var service = new GameBattingStatService();
             var stats = service.GetAllGameBattingStats();
             return Ok(stats);
         }
-        public IHttpActionResult Get(string queryType, int id)
+        public IHttpActionResult Get(string type, int id)
         {
             var service = new GameBattingStatService();
-            if (queryType.ToLower() == "stat")
+            if (type.ToLower() == "stat")
             {
                 var stats = service.GetGameBattingStat(id);
                 return Ok(stats);
             }
-            if (queryType.ToLower() == "game")
+            if (type.ToLower() == "game")
             {
                 var stats = service.GetGBSListByGameId(id);
                 return Ok(stats);
             }
-            if (queryType.ToLower() == "player")
+            if (type.ToLower() == "player")
             {
                 var stats = service.GetGBSListByPlayerId(id);
                 return Ok(stats);
