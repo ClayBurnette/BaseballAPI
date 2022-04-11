@@ -22,10 +22,10 @@ namespace BaseballAPI.Services
                 OwnerId = _userId,
                 Name = model.Name,
                 School = model.School,
-                JeseryNumber = model.JerseyNumber,
+                JerseyNumber = model.JerseyNumber,
                 DateOfBirth = model.DateOfBirth,
                 HomeTown = model.HomeTown,
-                PlayerPosition = (Position)model.PlayerPostition,
+                PlayerPosition = model.PlayerPostition,
                 TeamId = model.TeamId,
             };
             using(var ctx = new ApplicationDbContext())
@@ -42,9 +42,9 @@ namespace BaseballAPI.Services
                 {
                     PlayerId = e.PlayerId,
                     Name = e.Name,
-                    JeseryNumber = e.JeseryNumber,
+                    JeseryNumber = e.JerseyNumber,
                     TeamId = e.TeamId,
-                    PlayerPosition = (int)e.PlayerPosition
+                    PlayerPosition = e.PlayerPosition
                 }
                 );
                 return query.ToArray();
@@ -61,24 +61,24 @@ namespace BaseballAPI.Services
                         PlayerId = entity.PlayerId,
                         Name = entity.Name,
                         Hometown = entity.HomeTown,
-                        JeseryNumber = entity.JeseryNumber,
+                        JeseryNumber = entity.JerseyNumber,
                         TeamId = entity.TeamId,
                         DateOfBirth = entity.DateOfBirth,
-                        PlayerPosition = (int)entity.PlayerPosition
+                        PlayerPosition = entity.PlayerPosition
                     };
             }
         }
-        public IEnumerable<PlayerListItem> GetPlayerByPosition(int enumNum)
+        public IEnumerable<PlayerListItem> GetPlayerByPosition(Position enumNum)
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Players.Where(e => e.PlayerPosition == (Position)enumNum && e.OwnerId == _userId).Select(e => new PlayerListItem
+                var query = ctx.Players.Where(e => e.PlayerPosition == enumNum && e.OwnerId == _userId).Select(e => new PlayerListItem
                 {
                     PlayerId = e.PlayerId,
                     Name = e.Name,
-                    JeseryNumber = e.JeseryNumber,
+                    JeseryNumber = e.JerseyNumber,
                     TeamId = e.TeamId,
-                    PlayerPosition = (int)e.PlayerPosition
+                    PlayerPosition = e.PlayerPosition
                 }
                 );
                 return query.ToArray();
@@ -90,9 +90,9 @@ namespace BaseballAPI.Services
             {
                 var entity = ctx.Players.Single(e => e.PlayerId == model.PlayerId && e.OwnerId == _userId);
                 entity.Name = model.Name;
-                entity.JeseryNumber = model.JeseryNumber;
+                entity.JerseyNumber = model.JeseryNumber;
                 entity.TeamId = model.TeamId;
-                entity.PlayerPosition = (Position)model.PlayerPosition;
+                entity.PlayerPosition = model.PlayerPosition;
                 return ctx.SaveChanges() == 1;
 
             }
