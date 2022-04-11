@@ -66,7 +66,7 @@ namespace BaseballAPI.Services
                     };
             }
         }
-        public bool UpdatePlayer(PLayerEdit model)
+        public bool UpdatePlayer(PlayerEdit model)
         {
             using(var ctx = new ApplicationDbContext())
             {
