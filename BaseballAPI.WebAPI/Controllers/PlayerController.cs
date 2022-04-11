@@ -50,7 +50,7 @@ namespace BaseballAPI.WebAPI.Controllers
             return Ok(player);
         }
         //Get By Position
-        public IHttpActionResult GetByPosition(int positionNum)
+        public IHttpActionResult GetByPosition(Position positionNum)
         {
             PlayerService playerService = CreatePlayerService();
             var player = playerService.GetPlayerByPosition(positionNum);
