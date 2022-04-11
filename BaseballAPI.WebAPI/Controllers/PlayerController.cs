@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BaseballAPI.Data;
 using BaseballAPI.Models.PlayerModels;
 using BaseballAPI.Services;
 using Microsoft.AspNet.Identity;
@@ -47,6 +48,11 @@ namespace BaseballAPI.WebAPI.Controllers
             PlayerService noteService = CreatePlayerService();
             var note = noteService.GetPlayerById(id);
             return Ok(note);
+        }
+        //Get By Position
+        public IHttpActionResult GetByPosition((Position,int)positionNum)
+        {
+
         }
         //Put
         public IHttpActionResult Put(PlayerEdit player)

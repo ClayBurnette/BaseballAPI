@@ -62,7 +62,8 @@ namespace BaseballAPI.Services
                         Hometown = entity.HomeTown,
                         JeseryNumber = entity.JeseryNumber,
                         TeamId = entity.TeamId,
-                        DateOfBirth = entity.DateOfBirth
+                        DateOfBirth = entity.DateOfBirth,
+                        PlayerPosition = (int)entity.PlayerPosition
                     };
             }
         }
