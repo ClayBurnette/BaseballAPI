@@ -11,7 +11,10 @@ namespace BaseballAPI.Data
     public class GameInfo
     {
         [Key]
-        public int Id { get; set; }
+        public int GameId { get; set; }
+
+        [Required]
+        public Guid OwnerId { get; set; }
 
         [ForeignKey(nameof(HomeTeam))]
         public int TeamId1 { get; set; }
