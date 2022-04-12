@@ -36,31 +36,36 @@ namespace BaseballAPI.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<GameBattingStat>()
-                .HasOptional<Player>(p => p.Player)
+                .HasRequired(p => p.Player)
                 .WithMany()
+                .HasForeignKey(k => k.PlayerId)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<GameBattingStat>()
-                .HasOptional<GameInfo>(g => g.Game)
+                .HasRequired(g => g.Game)
                 .WithMany()
+                .HasForeignKey(k => k.GameId)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<GameInfo>()
-                .HasOptional<Team>(g => g.HomeTeam)
+                .HasRequired(g => g.HomeTeam)
                 .WithMany()
+                .HasForeignKey(k => k.TeamId1)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<GameInfo>()
-                .HasOptional<Team>(g => g.AwayTeam)
+                .HasRequired(g => g.AwayTeam)
                 .WithMany()
+                .HasForeignKey(k => k.TeamId2)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<Player>()
-                .HasOptional<Team>(t => t.Team)
+                .HasRequired(t => t.Team)
+                .WithMany()
+                .HasForeignKey(k => k.TeamId)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Team>()
+                .HasRequired(p => p.Player)
                 .WithMany()
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<Team>()
-                .HasOptional<Player>(p => p.Player)
-                .WithMany()
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Team>()
-                .HasOptional<GameInfo>(g => g.Game)
+                .HasRequired(g => g.Game)
                 .WithMany()
                 .WillCascadeOnDelete(false);
             modelBuilder

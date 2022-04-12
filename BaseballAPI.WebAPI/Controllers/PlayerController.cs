@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BaseballAPI.WebAPI.Controllers
 {
+    [Authorize]
     public class PlayerController : ApiController
     {
         //Create
