@@ -60,14 +60,14 @@ namespace BaseballAPI.Data
                 .WithMany()
                 .HasForeignKey(k => k.TeamId)
                 .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Team>()
-                .HasRequired(p => p.Player)
-                .WithMany()
-                .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Team>()
-                .HasRequired(g => g.Game)
-                .WithMany()
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Team>()
+               // .HasRequired(p => p.Player)
+               // .WithMany()
+                //.WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Team>()
+                //.HasRequired(g => g.Game)
+                //.WithMany()
+                //.WillCascadeOnDelete(false);
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();

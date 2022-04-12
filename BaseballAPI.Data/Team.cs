@@ -279,9 +279,7 @@ namespace BaseballAPI.Data
         public TeamLocation Location { get; set; }
         public TeamMascot Mascot { get; set; }
         public TeamStadium Stadium { get; set; }
-        public virtual Player Player { get; set; }
         public virtual List<Player> Players { get; set; } = new List<Player>();
-        public virtual GameInfo Game { get; set; }
         public virtual List<GameInfo> Games { get; set; } = new List<GameInfo>();
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
