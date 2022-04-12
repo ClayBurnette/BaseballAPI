@@ -38,27 +38,22 @@ namespace BaseballAPI.Data
             modelBuilder.Entity<GameBattingStat>()
                 .HasRequired(p => p.Player)
                 .WithMany()
-                .HasForeignKey(k => k.PlayerId)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<GameBattingStat>()
                 .HasRequired(g => g.Game)
                 .WithMany()
-                .HasForeignKey(k => k.GameId)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<GameInfo>()
                 .HasRequired(g => g.HomeTeam)
                 .WithMany()
-                .HasForeignKey(k => k.TeamId1)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<GameInfo>()
                 .HasRequired(g => g.AwayTeam)
                 .WithMany()
-                .HasForeignKey(k => k.TeamId2)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<Player>()
                 .HasRequired(t => t.Team)
                 .WithMany()
-                .HasForeignKey(k => k.TeamId)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<Team>()
                 .HasRequired(p => p.Player)
