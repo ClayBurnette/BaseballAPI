@@ -41,6 +41,7 @@ namespace BaseballAPI.Models.GameBattingStatsModels
         public int SB { get; set; }
         [Required]
         public int CS { get; set; }
+        public GameBattingStatCreate() { }
         public GameBattingStatCreate(string[] statArray)
         {
             int[] intConvert = Array.ConvertAll(statArray, s => int.Parse(s));
