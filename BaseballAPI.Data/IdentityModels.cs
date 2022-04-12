@@ -55,14 +55,6 @@ namespace BaseballAPI.Data
                 .HasRequired(t => t.Team)
                 .WithMany()
                 .WillCascadeOnDelete(false);
-            //modelBuilder.Entity<Team>()
-               // .HasRequired(p => p.Player)
-               // .WithMany()
-                //.WillCascadeOnDelete(false);
-            //modelBuilder.Entity<Team>()
-                //.HasRequired(g => g.Game)
-                //.WithMany()
-                //.WillCascadeOnDelete(false);
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
