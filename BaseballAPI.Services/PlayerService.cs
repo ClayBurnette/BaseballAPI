@@ -10,16 +10,16 @@ namespace BaseballAPI.Services
 {
     public class PlayerService
     {
-        private readonly Guid _userId;
+        /*private readonly Guid _userId;
         public PlayerService(Guid userid)
         {
             _userId = userid;
-        }
+        }*/
         public bool CreatePlayer(PlayerCreate model)
         {
             var entity = new Player()
             {
-                OwnerId = _userId,
+                //OwnerId = _userId,
                 Name = model.Name,
                 School = model.School,
                 JerseyNumber = model.JerseyNumber,
@@ -38,7 +38,7 @@ namespace BaseballAPI.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Players.Where(e => e.OwnerId == _userId).Select(e => new PlayerListItem
+                var query = ctx.Players.Select(e => new PlayerListItem
                 {
                     PlayerId = e.PlayerId,
                     Name = e.Name,
@@ -54,7 +54,7 @@ namespace BaseballAPI.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Players.Single(e => e.PlayerId == id && e.OwnerId == _userId);
+                var entity = ctx.Players.Single(e => e.PlayerId == id);
                 return
                     new PlayerDetail
                     {
@@ -72,7 +72,7 @@ namespace BaseballAPI.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Players.Where(e => e.PlayerPosition == enumNum && e.OwnerId == _userId).Select(e => new PlayerListItem
+                var query = ctx.Players.Where(e => e.PlayerPosition == enumNum).Select(e => new PlayerListItem
                 {
                     PlayerId = e.PlayerId,
                     Name = e.Name,
@@ -88,7 +88,7 @@ namespace BaseballAPI.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Players.Single(e => e.PlayerId == model.PlayerId && e.OwnerId == _userId);
+                var entity = ctx.Players.Single(e => e.PlayerId == model.PlayerId);
                 entity.Name = model.Name;
                 entity.JerseyNumber = model.JeseryNumber;
                 entity.TeamId = model.TeamId;
@@ -101,7 +101,7 @@ namespace BaseballAPI.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Players.Single(e => e.PlayerId == playerId && e.OwnerId == _userId);
+                var entity = ctx.Players.Single(e => e.PlayerId == playerId);
                 ctx.Players.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
