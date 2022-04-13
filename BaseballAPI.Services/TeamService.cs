@@ -104,10 +104,10 @@ namespace BaseballAPI.Services
                     .Select(e => new TeamListItem
                     {
                         TeamId = e.TeamId,
-                        Name = e.Name,
-                        Location = e.Location,
-                        Stadium = e.Stadium,
-                        Mascot = e.Mascot,
+                        Name = e.TeamName,
+                        Location = e.TeamLocation,
+                        Stadium = e.TeamStadium,
+                        Mascot = e.TeamMascot,
                         CreatedUtc = e.CreatedUtc
                     }
             );

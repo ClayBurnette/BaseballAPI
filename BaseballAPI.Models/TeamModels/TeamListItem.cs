@@ -11,10 +11,10 @@ namespace BaseballAPI.Models
     public class TeamListItem
     {
         public int TeamId { get; set; }
-        public TeamName Name { get; set; }
-        public TeamLocation Location { get; set; }
-        public TeamStadium Stadium { get; set; }
-        public TeamMascot Mascot { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string Stadium { get; set; }
+        public string Mascot { get; set; }
         [Display(Name="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }
