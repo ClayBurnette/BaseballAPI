@@ -53,7 +53,7 @@
                 PlayerPosition = Position.Pitcher,
                 JerseyNumber = 15,
                 HomeTown = "SomeWhere",
-                TeamId = 3
+                TeamId = 2
             }
             );
             context.Players.AddOrUpdate(p => p.PlayerId, new Player()
@@ -65,7 +65,7 @@
                 PlayerPosition = Position.ShortStop,
                 JerseyNumber = 10,
                 HomeTown = "SomeWhereElse",
-                TeamId = 4
+                TeamId = 1
             }
             );
             context.Games.AddOrUpdate(x => x.GameId,
