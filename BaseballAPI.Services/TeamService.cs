@@ -100,7 +100,7 @@ namespace BaseballAPI.Services
                 var query =
                     ctx
                     .Teams
-                    .Where(e => e.OwnerId == _userId)
+                    //.Where(e => e.OwnerId == _userId)
                     .Select(e => new TeamListItem
                     {
                         TeamId = e.TeamId,
