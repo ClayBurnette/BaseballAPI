@@ -32,7 +32,7 @@ namespace BaseballAPI.Data
         {
             get
             {
-                return AB + SAC + HBP;
+                return AB + SAC + HBP + BB;
             }
         }
         public int TB

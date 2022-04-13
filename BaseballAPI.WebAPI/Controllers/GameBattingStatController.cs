@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace BaseballAPI.WebAPI.Controllers
 {
+    [Authorize]
     public class GameBattingStatController : ApiController
     {
         public IHttpActionResult Post(GameBattingStatCreate model)
