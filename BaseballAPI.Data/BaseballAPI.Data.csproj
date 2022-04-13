@@ -94,6 +94,10 @@
     <Compile Include="Migrations\202204130136563_InitialCreate.designer.cs">
       <DependentUpon>202204130136563_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204131409090_initial.cs" />
+    <Compile Include="Migrations\202204131409090_initial.designer.cs">
+      <DependentUpon>202204131409090_initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +110,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204130136563_InitialCreate.resx">
       <DependentUpon>202204130136563_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204131409090_initial.resx">
+      <DependentUpon>202204131409090_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
