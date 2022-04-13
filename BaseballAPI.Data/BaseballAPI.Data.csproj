@@ -98,6 +98,14 @@
     <Compile Include="Migrations\202204131407088_Initial.designer.cs">
       <DependentUpon>202204131407088_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204131428094_Initial1.cs" />
+    <Compile Include="Migrations\202204131428094_Initial1.designer.cs">
+      <DependentUpon>202204131428094_Initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204131431240_Initial2.cs" />
+    <Compile Include="Migrations\202204131431240_Initial2.designer.cs">
+      <DependentUpon>202204131431240_Initial2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204131407088_Initial.resx">
       <DependentUpon>202204131407088_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204131428094_Initial1.resx">
+      <DependentUpon>202204131428094_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204131431240_Initial2.resx">
+      <DependentUpon>202204131431240_Initial2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
