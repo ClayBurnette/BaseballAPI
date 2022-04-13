@@ -61,8 +61,8 @@ namespace BaseballAPI.WebAPI.Controllers
         }
         private TeamService CreateTeamService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var teamService = new TeamService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var teamService = new TeamService();
             return teamService;
         }
     }
