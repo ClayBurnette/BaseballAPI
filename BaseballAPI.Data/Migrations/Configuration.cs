@@ -10,15 +10,14 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "BaseballAPI.Data.ApplicationDbContext";
         }
 
         protected override void Seed(BaseballAPI.Data.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
             context.Teams.AddOrUpdate(x => x.TeamId,
-             new Team() { TeamId = 1, TeamName = "Arizona Diamondbacks", TeamLocation = "Phoenix Arizona", TeamStadium = "Chase Field", TeamMascot = "Baxter And Bobcat" }
-               );
+            new Team() { TeamId = 1, TeamName = "Arizona Diamondbacks", TeamLocation = "Phoenix Arizona", TeamStadium = "Chase Field", TeamMascot = "Baxter And Bobcat" }
+              );
             context.Teams.AddOrUpdate(x => x.TeamId,
              new Team() { TeamId = 2, TeamName = "Atlanta Braves", TeamLocation = "Cumberland Georgia", TeamStadium = "Suntrust Park", TeamMascot = "Homer" }
                );
