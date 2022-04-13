@@ -17,8 +17,11 @@
         {
             //  This method will be called after migrating to the latest version.
             context.Teams.AddOrUpdate(x => x.TeamId,
+             new Team() { TeamId = 1, TeamName = "Arizona Diamondbacks", TeamLocation = "Phoenix Arizona", TeamStadium = "Chase Field", TeamMascot = "Baxter And Bobcat" }
+               );
+            context.Teams.AddOrUpdate(x => x.TeamId,
              new Team() { TeamId = 2, TeamName = "Atlanta Braves", TeamLocation = "Cumberland Georgia", TeamStadium = "Suntrust Park", TeamMascot = "Homer" }
-              );
+               );
             context.Teams.AddOrUpdate(x => x.TeamId,
               new Team() { TeamId = 3, TeamName = "Baltimore Orioles", TeamLocation = "Baltimore Maryland", TeamStadium = "Oriole Park At Camden Yards", TeamMascot = "The Bird" }
                );
