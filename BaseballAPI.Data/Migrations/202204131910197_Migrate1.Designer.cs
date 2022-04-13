@@ -7,13 +7,13 @@ namespace BaseballAPI.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class Migrate1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Migrate1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202204130136563_InitialCreate"; }
+            get { return "202204131910197_Migrate1"; }
         }
         
         string IMigrationMetadata.Source

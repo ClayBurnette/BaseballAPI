@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -29,8 +29,8 @@
                         CS = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.GameInfo", t => t.GameId)
-                .ForeignKey("dbo.Player", t => t.PlayerId)
+                .ForeignKey("dbo.GameInfo", t => t.GameId, cascadeDelete: true)
+                .ForeignKey("dbo.Player", t => t.PlayerId, cascadeDelete: true)
                 .Index(t => t.PlayerId)
                 .Index(t => t.GameId);
             
@@ -49,8 +49,8 @@
                     })
                 .PrimaryKey(t => t.GameId)
                 .ForeignKey("dbo.Team", t => t.Team_TeamId)
-                .ForeignKey("dbo.Team", t => t.TeamId2)
-                .ForeignKey("dbo.Team", t => t.TeamId1)
+                .ForeignKey("dbo.Team", t => t.TeamId2, cascadeDelete: false)
+                .ForeignKey("dbo.Team", t => t.TeamId1, cascadeDelete: false)
                 .Index(t => t.TeamId1)
                 .Index(t => t.TeamId2)
                 .Index(t => t.Team_TeamId);
@@ -68,8 +68,8 @@
                         Losses = c.Int(nullable: false),
                         Name = c.Int(nullable: false),
                         Location = c.Int(nullable: false),
-                        Mascot = c.Int(nullable: false),
                         Stadium = c.Int(nullable: false),
+                        Mascot = c.Int(nullable: false),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                     })
@@ -90,7 +90,7 @@
                         Team_TeamId = c.Int(),
                     })
                 .PrimaryKey(t => t.PlayerId)
-                .ForeignKey("dbo.Team", t => t.TeamId)
+                .ForeignKey("dbo.Team", t => t.TeamId, cascadeDelete: false)
                 .ForeignKey("dbo.Team", t => t.Team_TeamId)
                 .Index(t => t.TeamId)
                 .Index(t => t.Team_TeamId);
