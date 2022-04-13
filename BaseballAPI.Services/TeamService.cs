@@ -11,17 +11,17 @@ namespace BaseballAPI.Services
 {
     public class TeamService
     {
-        private readonly Guid _userId;
+        /*private readonly Guid _userId;
         public TeamService(Guid userId)
         {
             _userId = userId;
-        }
+        }*/
         public bool CreateTeam(TeamCreate model)
         {
             var entity =
                 new Team()
                 {
-                    OwnerId = _userId,
+                    //OwnerId = _userId,
                     TeamName = model.TeamName,
                     TeamMascot = model.TeamMascot,
                     TeamLocation = model.TeamLocation,
@@ -43,7 +43,7 @@ namespace BaseballAPI.Services
                 var entity =
                     ctx
                     .Teams
-                    .Single(e => e.TeamId == model.TeamId && e.OwnerId == _userId);
+                    .Single(e => e.TeamId == model.TeamId /*&& e.OwnerId == _userId*/);
 
                 entity.TeamId = model.TeamId;
                 entity.TeamName = model.TeamName;
@@ -63,7 +63,7 @@ namespace BaseballAPI.Services
                 var entity =
                     ctx
                     .Teams
-                    .Single(e => e.TeamId == teamId && e.OwnerId == _userId);
+                    .Single(e => e.TeamId == teamId /*&& e.OwnerId == _userId*/);
 
                 ctx.Teams.Remove(entity);
 
@@ -77,7 +77,7 @@ namespace BaseballAPI.Services
                 var entity =
                     ctx
                     .Teams
-                    .Single(e => e.TeamId == id && e.OwnerId == _userId);
+                    .Single(e => e.TeamId == id /*&& e.OwnerId == _userId*/);
                 return
                     new TeamDetail
                     {

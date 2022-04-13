@@ -266,8 +266,6 @@ namespace BaseballAPI.Data
         [Key]
         public int TeamId { get; set; }
         [Required]
-        public Guid OwnerId { get; set; }
-        [Required]
         public string TeamName { get; set; }
         [Required]
         public string TeamLocation { get; set; }

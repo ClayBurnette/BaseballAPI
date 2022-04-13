@@ -39,7 +39,6 @@
                 c => new
                     {
                         GameId = c.Int(nullable: false, identity: true),
-                        OwnerId = c.Guid(nullable: false),
                         TeamId1 = c.Int(nullable: false),
                         TeamId2 = c.Int(nullable: false),
                         HomeScore = c.Int(nullable: false),
@@ -61,7 +60,6 @@
                 c => new
                     {
                         TeamId = c.Int(nullable: false, identity: true),
-                        OwnerId = c.Guid(nullable: false),
                         TeamName = c.String(nullable: false),
                         TeamLocation = c.String(nullable: false),
                         TeamMascot = c.String(),
@@ -82,7 +80,6 @@
                 c => new
                     {
                         PlayerId = c.Int(nullable: false, identity: true),
-                        OwnerId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         DateOfBirth = c.String(nullable: false),
                         School = c.String(nullable: false),
