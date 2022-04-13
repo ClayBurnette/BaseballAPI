@@ -38,23 +38,23 @@ namespace BaseballAPI.Data
             modelBuilder.Entity<GameBattingStat>()
                 .HasRequired(p => p.Player)
                 .WithMany()
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
             modelBuilder.Entity<GameBattingStat>()
                 .HasRequired(g => g.Game)
                 .WithMany()
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
             modelBuilder.Entity<GameInfo>()
                 .HasRequired(g => g.HomeTeam)
                 .WithMany()
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
             modelBuilder.Entity<GameInfo>()
                 .HasRequired(g => g.AwayTeam)
                 .WithMany()
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
             modelBuilder.Entity<Player>()
                 .HasRequired(t => t.Team)
                 .WithMany()
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
