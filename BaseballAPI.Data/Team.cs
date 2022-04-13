@@ -134,69 +134,6 @@ namespace BaseballAPI.Data
         [Display(Name = "Washington DC")]
         WashingtonDC = 30,
     }
-    public enum TeamMascot
-    {
-        [Display(Name = "Baxter And Bobcat")]
-        BaxterAndBobcat = 1,
-        [Display(Name = "Homer")]
-        Homer = 2,
-        [Display(Name = "The Bird")]
-        TheBird = 3,
-        [Display(Name = "Wally The Green Monster")]
-        WallyTheGreenMonster = 4,
-        [Display(Name = "Southpaw")]
-        Southpaw = 5,
-        [Display(Name = "Clark")]
-        Clark = 6,
-        [Display(Name = "Gapper")]
-        Gapper = 7,
-        [Display(Name = "Slider")]
-        Slider = 8,
-        [Display(Name = "Dinger")]
-        Dinger = 9,
-        [Display(Name = "Paws")]
-        Paws = 10,
-        [Display(Name = "Junction Jack")]
-        JunctionJack = 11,
-        [Display(Name = "Slugerrr")]
-        Sluggerrr = 12,
-        [Display(Name = "Rally Monkey")]
-        RallyMonkey = 13,
-        [Display(Name = "Brooklyn And Brix")]
-        BrooklynAndBrix = 14,
-        [Display(Name = "Billy The Marlin")]
-        BillyTheMarlin = 15,
-        [Display(Name = "Barrelman")]
-        Barrelman = 16,
-        [Display(Name = "TCBear")]
-        TCBear = 17,
-        [Display(Name = "Dandy")]
-        Dandy = 18,
-        [Display(Name = "Mr Met")]
-        MrMet = 19,
-        [Display(Name = "Stomper")]
-        Stomper = 20,
-        [Display(Name = "Phillie Phanatic")]
-        PhilliePhanatic = 21,
-        [Display(Name = "Pirate Parrot")]
-        PirateParrot = 22,
-        [Display(Name = "Swinging Friar")]
-        SwingingFriar = 23,
-        [Display(Name = "Lou Seal")]
-        LouSeal = 24,
-        [Display(Name = "Mariner Moose")]
-        MarinerMoose = 25,
-        [Display(Name = "Fredbird")]
-        Fredbird = 26,
-        [Display(Name = "Raymond")]
-        Raymond = 27,
-        [Display(Name = "Rangers Captain")]
-        RangersCaptain = 28,
-        [Display(Name = "Junior")]
-        Junior = 29,
-        [Display(Name = "The Presidents")]
-        ThePresidents = 30,
-    }
     public enum TeamStadium
     {
         [Display(Name = "Chase Field")]
@@ -260,6 +197,69 @@ namespace BaseballAPI.Data
         [Display(Name = "Nationals Park")]
         NationalsPark = 30,
     }
+    public enum TeamMascot
+    {
+        [Display(Name = "Baxter And Bobcat")]
+        BaxterAndBobcat = 1,
+        [Display(Name = "Homer")]
+        Homer = 2,
+        [Display(Name = "The Bird")]
+        TheBird = 3,
+        [Display(Name = "Wally The Green Monster")]
+        WallyTheGreenMonster = 4,
+        [Display(Name = "Southpaw")]
+        Southpaw = 5,
+        [Display(Name = "Clark")]
+        Clark = 6,
+        [Display(Name = "Gapper")]
+        Gapper = 7,
+        [Display(Name = "Slider")]
+        Slider = 8,
+        [Display(Name = "Dinger")]
+        Dinger = 9,
+        [Display(Name = "Paws")]
+        Paws = 10,
+        [Display(Name = "Junction Jack")]
+        JunctionJack = 11,
+        [Display(Name = "Slugerrr")]
+        Sluggerrr = 12,
+        [Display(Name = "Rally Monkey")]
+        RallyMonkey = 13,
+        [Display(Name = "Brooklyn And Brix")]
+        BrooklynAndBrix = 14,
+        [Display(Name = "Billy The Marlin")]
+        BillyTheMarlin = 15,
+        [Display(Name = "Barrelman")]
+        Barrelman = 16,
+        [Display(Name = "TCBear")]
+        TCBear = 17,
+        [Display(Name = "Dandy")]
+        Dandy = 18,
+        [Display(Name = "Mr Met")]
+        MrMet = 19,
+        [Display(Name = "Stomper")]
+        Stomper = 20,
+        [Display(Name = "Phillie Phanatic")]
+        PhilliePhanatic = 21,
+        [Display(Name = "Pirate Parrot")]
+        PirateParrot = 22,
+        [Display(Name = "Swinging Friar")]
+        SwingingFriar = 23,
+        [Display(Name = "Lou Seal")]
+        LouSeal = 24,
+        [Display(Name = "Mariner Moose")]
+        MarinerMoose = 25,
+        [Display(Name = "Fredbird")]
+        Fredbird = 26,
+        [Display(Name = "Raymond")]
+        Raymond = 27,
+        [Display(Name = "Rangers Captain")]
+        RangersCaptain = 28,
+        [Display(Name = "Junior")]
+        Junior = 29,
+        [Display(Name = "The Presidents")]
+        ThePresidents = 30,
+    }
     public class Team
     {
         public Team() { }
@@ -277,11 +277,18 @@ namespace BaseballAPI.Data
         public int Losses { get; set; }
         public TeamName Name { get; set; }
         public TeamLocation Location { get; set; }
-        public TeamMascot Mascot { get; set; }
         public TeamStadium Stadium { get; set; }
+        public TeamMascot Mascot { get; set; }
         public virtual List<Player> Players { get; set; } = new List<Player>();
         public virtual List<GameInfo> Games { get; set; } = new List<GameInfo>();
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
+        public Team (TeamName name, TeamLocation location, TeamStadium stadium, TeamMascot mascot)
+        {
+            Name = name;
+            Location = location;
+            Stadium = stadium;
+            Mascot = mascot;
+        }
     }
 }
