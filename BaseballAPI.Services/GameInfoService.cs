@@ -21,7 +21,7 @@ namespace BaseballAPI.Services
         {
             var gameEntity = new GameInfo()
             {
-                OwnerId = _userId,
+                //OwnerId = _userId,
                 TeamId1 = game.TeamId1,
                 TeamId2 = game.TeamId2,
                 HomeScore = game.HomeScore,
@@ -45,7 +45,7 @@ namespace BaseballAPI.Services
                 var gameQuery =
                     gameCTX
                             .Games
-                            .Where(g => g.OwnerId == _userId)
+                            //.Where(g => g.OwnerId == _userId)
                             .Select(
                              g =>
                                 new GameListAll
@@ -72,7 +72,7 @@ namespace BaseballAPI.Services
                 var gameEntity =
                     gameCTX
                             .Games
-                            .Single(g => g.GameId == id && g.OwnerId == _userId);
+                            .Single(g => g.GameId == id);
                 return
                     new GameDetail
                     {
@@ -94,7 +94,7 @@ namespace BaseballAPI.Services
                 var gameEntity =
                    gameCTX
                             .Games
-                            .Single(g => g.GameId == game.GameId && g.OwnerId == _userId);
+                            .Single(g => g.GameId == game.GameId);
 
                 gameEntity.TeamId1 = game.TeamId1;
                 gameEntity.TeamId2 = game.TeamId2;
@@ -115,7 +115,7 @@ namespace BaseballAPI.Services
                 var gameEntity =
                     gameCTX
                             .Games
-                            .Single(g => g.GameId == gameID && g.OwnerId == _userId);
+                            .Single(g => g.GameId == gameID);
                 gameCTX.Games.Remove(gameEntity);
                 return gameCTX.SaveChanges() == 1;
             }
