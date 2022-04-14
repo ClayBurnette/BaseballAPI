@@ -34,6 +34,23 @@ namespace BaseballAPI.WebAPI.Controllers
             var game = gameService.GetGameById(id);
             return Ok(game);
         }
+        [HttpGet]
+        [Route("GameInfo/homeTeamId", Name = "GetByHomeTeamId")]
+        public IHttpActionResult GetGameInfoByHomeTeamId(int homeTeamId)
+        {
+            GameInfoService gameService = CreateGameInfoService();
+            var game = gameService.GetGameByHomeTeamId(homeTeamId);
+            return Ok(game);
+        }
+
+        [HttpGet]
+        [Route("GameInfo/awayTeamId", Name = "GetByAwayTeamId")]
+        public IHttpActionResult GetGameInfoByAwayTeamId(int awayTeamId)
+        {
+            GameInfoService gameService = CreateGameInfoService();
+            var game = gameService.GetGameByAwayTeamId(awayTeamId);
+            return Ok(game);
+        }
 
         public IHttpActionResult GamePost(GameCreate game)
         {

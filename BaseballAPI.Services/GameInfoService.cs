@@ -87,6 +87,55 @@ namespace BaseballAPI.Services
             }
         }
 
+        public GameDetail GetGameByHomeTeamId(int homeTeamId)
+        {
+            using (var gameCTX = new ApplicationDbContext())
+            {
+                var gameEntity =
+                    gameCTX
+                            .Games
+                            .Single(g => g.HomeTeamID == homeTeamId);
+                return
+                    new GameDetail
+                    {
+                        GameId = gameEntity.GameId,
+                        HomeTeamID = gameEntity.HomeTeamID,
+                        AwayTeamID = gameEntity.AwayTeamID,
+                        HomeScore = gameEntity.HomeScore,
+                        AwayScore = gameEntity.AwayScore,
+                        Innings = gameEntity.Innings,
+                        SeasonYear = gameEntity.SeasonYear
+
+                    };
+            }
+        }
+
+        public GameDetail GetGameByAwayTeamId(int awayTeamId)
+        {
+            using (var gameCTX = new ApplicationDbContext())
+            {
+                var gameEntity =
+                    gameCTX
+                            .Games
+                            .Single(g => g.AwayTeamID == awayTeamId);
+                return
+                    new GameDetail
+                    {
+                        GameId = gameEntity.GameId,
+                        HomeTeamID = gameEntity.HomeTeamID,
+                        AwayTeamID = gameEntity.AwayTeamID,
+                        HomeScore = gameEntity.HomeScore,
+                        AwayScore = gameEntity.AwayScore,
+                        Innings = gameEntity.Innings,
+                        SeasonYear = gameEntity.SeasonYear
+
+                    };
+            }
+        }
+
+
+
+
         public bool UpdateGameInfo(GameEdit game)
         {
             using(var gameCTX = new ApplicationDbContext())
