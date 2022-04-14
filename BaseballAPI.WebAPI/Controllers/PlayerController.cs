@@ -44,13 +44,15 @@ namespace BaseballAPI.WebAPI.Controllers
             return Ok();
         }
         //Get By Id
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetById(int id)
         {
             PlayerService playerService = CreatePlayerService();
             var player = playerService.GetPlayerById(id);
             return Ok(player);
         }
         //Get By Position
+        [HttpGet]
+        [Route("Player/positionNum", Name = "GetByPosition")]
         public IHttpActionResult GetByPosition(Position positionNum)
         {
             PlayerService playerService = CreatePlayerService();
