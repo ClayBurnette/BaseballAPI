@@ -17,11 +17,11 @@ namespace BaseballAPI.Data
         //public Guid OwnerId { get; set; }
 
         [ForeignKey(nameof(HomeTeam))]
-        public int TeamId1 { get; set; }
+        public int HomeTeamID { get; set; }
         public virtual Team HomeTeam { get; set; }
 
         [ForeignKey(nameof(AwayTeam))]
-        public int TeamId2 { get; set; }
+        public int AwayTeamID { get; set; }
         public virtual Team AwayTeam { get; set; }
 
         [Required]
