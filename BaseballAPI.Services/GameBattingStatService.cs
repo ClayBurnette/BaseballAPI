@@ -1,4 +1,5 @@
 ﻿using BaseballAPI.Data;
+using BaseballAPI.Models.GameBattingStatModels;
 using BaseballAPI.Models.GameBattingStatsModels;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace BaseballAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool CreateGameBattingStatXtreme(string[] allStats)
+        /*public bool CreateGameBattingStatXtreme(string[] allStats)
         {
             GameBattingStatCreate model = new GameBattingStatCreate(allStats);
             GameBattingStat entity = new GameBattingStat(model.PlayerId, model.GameId, model.AB, model.R, model.H, model.RBI, model.BB, model.SO, model.HR, model.Double, model.Triple, model.SAC, model.HBP, model.SB, model.CS);
@@ -28,7 +29,7 @@ namespace BaseballAPI.Services
                 ctx.GameBattingStats.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-        }
+        }*/
         public IEnumerable<GameBattingStatListItem> GetAllGameBattingStats()
         {
             using (var ctx = new ApplicationDbContext())
@@ -76,6 +77,40 @@ namespace BaseballAPI.Services
                         SB = entity.SB,
                         CS = entity.CS
                     };
+            }
+        }
+        public SeasonBattingStat GetSeasonBattingStat(int player, int season)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                List<GameBattingStat> query = new List<GameBattingStat>();
+                if (season == 0)
+                {
+                    query.AddRange(ctx.GameBattingStats.Where(e => e.PlayerId == player).ToList());
+                }
+                else
+                {
+                    query.AddRange(ctx.GameBattingStats.Where(e => e.PlayerId == player && e.Game.SeasonYear == season).ToList());
+                }
+                var entity = new SeasonBattingStat
+                {
+                    PlayerId = player,
+                    Season = season,
+                    AB = query.Sum(s => s.AB),
+                    R = query.Sum(s => s.R),
+                    H = query.Sum(s => s.H),
+                    RBI = query.Sum(s => s.RBI),
+                    BB = query.Sum(s => s.BB),
+                    SO = query.Sum(s => s.SO),
+                    HR = query.Sum(s => s.HR),
+                    Double = query.Sum(s => s.Double),
+                    Triple = query.Sum(s => s.Triple),
+                    SAC = query.Sum(s => s.SAC),
+                    HBP = query.Sum(s => s.HBP),
+                    SB = query.Sum(s => s.SB),
+                    CS = query.Sum(s => s.CS)
+                };
+                return entity;
             }
         }
         public IEnumerable<GameBattingStatListItem> GetGBSListByPlayerId(int playerId)

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace BaseballAPI.Models.GameBattingStatsModels
 {
     public class GameBattingStatEdit
-    {
-        public int Id { get; set; }      
+    {   
+        public int Id { get; set; }
         public int PlayerId { get; set; }
         public int GameId { get; set; }
         public int AB { get; set; }
