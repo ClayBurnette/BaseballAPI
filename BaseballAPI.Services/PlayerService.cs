@@ -101,8 +101,14 @@ namespace BaseballAPI.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Players.Single(e => e.PlayerId == playerId);
-                ctx.Players.Remove(entity);
+                var entity = ctx.GameBattingStats.Where(s => s.PlayerId == playerId).ToArray();
+                foreach(GameBattingStat stat in entity)
+                {
+                    ctx.GameBattingStats.Remove(stat);
+                    ctx.SaveChanges();
+                }
+                var entity2 = ctx.Players.Single(e => e.PlayerId == playerId);
+                ctx.Players.Remove(entity2);
                 return ctx.SaveChanges() == 1;
             }
         }
