@@ -9,9 +9,9 @@ namespace BaseballAPI.Models.GameInfoModel
     public class GameDelete
     {
         public int GameId { get; set; }
-        public int TeamId1 { get; set; }
+        public int HomeTeamID { get; set; }
 
-        public int TeamId2 { get; set; }
+        public int AwayTeamID { get; set; }
 
         public int HomeScore { get; set; }
 

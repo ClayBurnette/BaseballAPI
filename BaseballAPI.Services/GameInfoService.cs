@@ -22,8 +22,8 @@ namespace BaseballAPI.Services
             var gameEntity = new GameInfo()
             {
                 //OwnerId = _userId,
-                TeamId1 = game.TeamId1,
-                TeamId2 = game.TeamId2,
+                HomeTeamID = game.HomeTeamID,
+                AwayTeamID = game.AwayTeamID,
                 HomeScore = game.HomeScore,
                 AwayScore = game.AwayScore,
                 Innings = game.Innings,
@@ -51,8 +51,8 @@ namespace BaseballAPI.Services
                                 new GameListAll
                                 {
                                     GameId = g.GameId,
-                                    TeamId1 = g.TeamId1,
-                                    TeamId2 = g.TeamId2,
+                                    HomeTeamID = g.HomeTeamID,
+                                    AwayTeamID = g.AwayTeamID,
                                     HomeScore = g.HomeScore,
                                     AwayScore = g.AwayScore,
                                     Innings = g.Innings,
@@ -77,8 +77,8 @@ namespace BaseballAPI.Services
                     new GameDetail
                     {
                         GameId = gameEntity.GameId,
-                        TeamId1 = gameEntity.TeamId1,
-                        TeamId2 = gameEntity.TeamId2,
+                        HomeTeamID = gameEntity.HomeTeamID,
+                        AwayTeamID = gameEntity.AwayTeamID,
                         HomeScore = gameEntity.HomeScore,
                         AwayScore = gameEntity.AwayScore,
                         Innings = gameEntity.Innings,
@@ -96,8 +96,8 @@ namespace BaseballAPI.Services
                             .Games
                             .Single(g => g.GameId == game.GameId);
 
-                gameEntity.TeamId1 = game.TeamId1;
-                gameEntity.TeamId2 = game.TeamId2;
+                gameEntity.HomeTeamID = game.HomeTeamID;
+                gameEntity.AwayTeamID = game.AwayTeamID;
                 gameEntity.HomeScore = game.HomeScore;
                 gameEntity.AwayScore = game.AwayScore;
                 gameEntity.Innings = game.Innings;

@@ -154,7 +154,7 @@
             }
             );
             context.Games.AddOrUpdate(x => x.GameId,
-                new GameInfo() { GameId = 1, TeamId1 = 1, TeamId2 = 2, HomeScore = 6, AwayScore = 2, Innings = 9, SeasonYear = 2022 });
+                new GameInfo() { GameId = 1, HomeTeamID = 1, AwayTeamID = 2, HomeScore = 6, AwayScore = 2, Innings = 9, SeasonYear = 2022 });
             context.GameBattingStats.AddOrUpdate(x => x.Id,
                new GameBattingStat() { Id = 1, PlayerId = 1, GameId = 1, AB = 4, R = 1, H = 2, RBI = 2, BB = 1, SO = 1, HR = 1, Double = 0, Triple = 0, SAC = 0, HBP = 0, SB = 0, CS = 0 }
                 );

@@ -10,10 +10,10 @@ namespace BaseballAPI.Models.GameInfoModel
     public class GameCreate
     {
         [Required]
-        public int TeamId1 { get; set; }
+        public int HomeTeamID { get; set; }
 
         [Required]
-        public int TeamId2 { get; set; }
+        public int AwayTeamID { get; set; }
 
         [Required]
         [Range(0, int.MaxValue)]
