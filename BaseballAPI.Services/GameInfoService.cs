@@ -161,6 +161,12 @@ namespace BaseballAPI.Services
         {
             using(var gameCTX = new ApplicationDbContext())
             {
+                var entity = gameCTX.GameBattingStats.Where(s => s.GameId == gameID).ToArray();
+                foreach (GameBattingStat stat in entity)
+                {
+                    gameCTX.GameBattingStats.Remove(stat);
+                    gameCTX.SaveChanges();
+                }
                 var gameEntity =
                     gameCTX
                             .Games
