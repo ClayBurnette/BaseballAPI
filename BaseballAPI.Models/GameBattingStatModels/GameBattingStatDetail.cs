@@ -12,6 +12,7 @@ namespace BaseballAPI.Models.GameBattingStatsModels
         public int Id { get; set; }
         public int PlayerId { get; set; }
         public int GameId { get; set; }
+        public string PlayerName { get; set; }
         public int AB { get; set; }
         public int R { get; set; }
         public int H { get; set; }

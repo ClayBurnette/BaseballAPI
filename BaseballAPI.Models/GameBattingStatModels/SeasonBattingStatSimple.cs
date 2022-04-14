@@ -10,6 +10,7 @@ namespace BaseballAPI.Models.GameBattingStatModels
     public class SeasonBattingStatSimple
     {
         public int PlayerId { get; set; }
+        public string PlayerName { get; set; }
         public int Season { get; set; }
         public double AVG { get; set; }
         public double OBP { get; set; }

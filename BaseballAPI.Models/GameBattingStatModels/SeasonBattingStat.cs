@@ -11,6 +11,7 @@ namespace BaseballAPI.Models.GameBattingStatModels
     {
         public int PlayerId { get; set; }
         public int Season { get; set; }
+        public string PlayerName { get; set; }
         public decimal AVG
         {
             get
