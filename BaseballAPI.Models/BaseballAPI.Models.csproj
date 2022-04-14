@@ -73,6 +73,8 @@
     <Compile Include="GameBattingStatModels\GameBattingStatDetail.cs" />
     <Compile Include="GameBattingStatModels\GameBattingStatEdit.cs" />
     <Compile Include="GameBattingStatModels\GameBattingStatListItem.cs" />
+    <Compile Include="GameBattingStatModels\SeasonBattingStat.cs" />
+    <Compile Include="GameBattingStatModels\SeasonBattingStatSimple.cs" />
     <Compile Include="GameInfoModel\GameCreate.cs" />
     <Compile Include="GameInfoModel\GameDelete.cs" />
     <Compile Include="GameInfoModel\GameDetail.cs" />
