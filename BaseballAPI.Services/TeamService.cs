@@ -26,8 +26,6 @@ namespace BaseballAPI.Services
                     TeamMascot = model.TeamMascot,
                     TeamLocation = model.TeamLocation,
                     TeamStadium = model.TeamStadium,
-                    Wins = model.Wins,
-                    Losses = model.Losses,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
@@ -50,8 +48,6 @@ namespace BaseballAPI.Services
                 entity.TeamLocation = model.TeamLocation;
                 entity.TeamStadium = model.TeamStadium;
                 entity.TeamMascot = model.TeamMascot;
-                entity.Wins = model.Wins;
-                entity.Losses = model.Losses;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -86,8 +82,8 @@ namespace BaseballAPI.Services
                         TeamLocation = entity.TeamLocation,
                         TeamStadium = entity.TeamStadium,
                         TeamMascot = entity.TeamMascot,
-                        Wins = entity.Wins,
-                        Losses = entity.Losses,
+                        Wins = ctx.Games.Where(w => w.HomeTeamID == entity.TeamId && w.HomeScore > w.AwayScore || w.AwayTeamID == entity.TeamId && w.AwayScore > w.HomeScore).Count(),
+                        Losses = ctx.Games.Where(l => l.HomeTeamID == entity.TeamId && l.HomeScore < l.AwayScore || l.AwayTeamID == entity.TeamId && l.AwayScore < l.HomeScore).Count(),
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
                     };
@@ -105,6 +101,8 @@ namespace BaseballAPI.Services
                     {
                         TeamId = e.TeamId,
                         Name = e.TeamName,
+                        Wins = ctx.Games.Where(w => w.HomeTeamID == e.TeamId && w.HomeScore > w.AwayScore || w.AwayTeamID == e.TeamId && w.AwayScore > w.HomeScore).Count(),
+                        Losses = ctx.Games.Where(l => l.HomeTeamID == e.TeamId && l.HomeScore < l.AwayScore || l.AwayTeamID == e.TeamId && l.AwayScore < l.HomeScore).Count(),
                         Location = e.TeamLocation,
                         Stadium = e.TeamStadium,
                         Mascot = e.TeamMascot,
