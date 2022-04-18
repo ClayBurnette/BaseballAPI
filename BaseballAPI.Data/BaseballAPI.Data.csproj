@@ -102,6 +102,14 @@
     <Compile Include="Migrations\202204141436481_GameInfo1.designer.cs">
       <DependentUpon>202204141436481_GameInfo1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204181311341_WinLoss.cs" />
+    <Compile Include="Migrations\202204181311341_WinLoss.designer.cs">
+      <DependentUpon>202204181311341_WinLoss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204181328521_WinLossTwo.cs" />
+    <Compile Include="Migrations\202204181328521_WinLossTwo.designer.cs">
+      <DependentUpon>202204181328521_WinLossTwo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204141436481_GameInfo1.resx">
       <DependentUpon>202204141436481_GameInfo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204181311341_WinLoss.resx">
+      <DependentUpon>202204181311341_WinLoss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204181328521_WinLossTwo.resx">
+      <DependentUpon>202204181328521_WinLossTwo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

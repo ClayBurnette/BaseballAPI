@@ -24,7 +24,5 @@ namespace BaseballAPI.Models
         [MinLength(5, ErrorMessage = "Please Enter At Least 5 Characters.")]
         [MaxLength(100, ErrorMessage = "There Are Too Many Characters In This Field.")]
         public string TeamStadium { get; set; }
-        public int Wins { get; set; }
-        public int Losses { get; set; }
     }
 }

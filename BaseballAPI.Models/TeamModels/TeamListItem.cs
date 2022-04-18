@@ -12,6 +12,8 @@ namespace BaseballAPI.Models
     {
         public int TeamId { get; set; }
         public string Name { get; set; }
+        public int Wins { get; set; }
+        public int Losses { get; set; }
         public string Location { get; set; }
         public string Stadium { get; set; }
         public string Mascot { get; set; }

@@ -271,8 +271,23 @@ namespace BaseballAPI.Data
         public string TeamLocation { get; set; }
         public string TeamMascot { get; set; }
         public string TeamStadium { get; set; }
-        public int Wins { get; set; }
-        public int Losses { get; set; }
+        public int Wins
+        {
+            get
+            {
+                int wins = Games.Where(w => w.HomeTeamID == TeamId && w.HomeScore > w.AwayScore/* || w.AwayTeamID == TeamId && w.AwayScore > w.HomeScore*/).Count();
+                int winstwo = Games.Where(w => w.AwayTeamID == TeamId && w.AwayScore > w.HomeScore).Count();
+                return wins+winstwo;
+            }
+        }
+        public int Losses
+        {
+            get
+            {
+                int losses = Games.Where(l => l.HomeTeamID == TeamId && l.HomeScore > l.AwayScore || l.AwayTeamID == TeamId && l.AwayScore > l.HomeScore).Count();
+                return losses;
+            }
+        }
         public TeamName Name { get; set; }
         public TeamLocation Location { get; set; }
         public TeamStadium Stadium { get; set; }
@@ -281,7 +296,7 @@ namespace BaseballAPI.Data
         public virtual List<GameInfo> Games { get; set; } = new List<GameInfo>();
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
-        public Team (TeamName name, TeamLocation location, TeamStadium stadium, TeamMascot mascot)
+        public Team(TeamName name, TeamLocation location, TeamStadium stadium, TeamMascot mascot)
         {
             Name = name;
             Location = location;
