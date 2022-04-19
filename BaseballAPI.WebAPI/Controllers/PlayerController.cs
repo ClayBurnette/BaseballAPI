@@ -21,14 +21,23 @@ namespace BaseballAPI.WebAPI.Controllers
             var playerService = new PlayerService();
             return playerService;
         }
-        //Get All
+        //Get api/documentation
+        /// <summary>
+        /// This will get all players in the database.
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
             PlayerService playerService = CreatePlayerService();
             var player = playerService.GetPlayers();
             return Ok(player);
         }
-        //Post
+        //Post api/documentation
+        /// <summary>
+        /// This will allow you to add a new player to the database.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(PlayerCreate player)
         {
             if (!ModelState.IsValid)
@@ -41,16 +50,26 @@ namespace BaseballAPI.WebAPI.Controllers
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok($"{player.Name} was successfully added to the list!");
         }
-        //Get By Id
+        //Get By Id api/documentation
+        /// <summary>
+        /// Here you can search for a specific player by their id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult GetById(int id)
         {
             PlayerService playerService = CreatePlayerService();
             var player = playerService.GetPlayerById(id);
             return Ok(player);
         }
-        //Get By Position
+        //Get By Position api/documentation
+        /// <summary>
+        /// Here you can search for all players in a specific position.
+        /// </summary>
+        /// <param name="positionNum"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("Player/positionNum", Name = "GetByPosition")]
         public IHttpActionResult GetByPosition(Position positionNum)
@@ -59,7 +78,12 @@ namespace BaseballAPI.WebAPI.Controllers
             var player = playerService.GetPlayerByPosition(positionNum);
             return Ok(player);
         }
-        //Put
+        //Put api/documentation
+        /// <summary>
+        /// This will allow you to update each player.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(PlayerEdit player)
         {
             if (!ModelState.IsValid)
@@ -71,17 +95,23 @@ namespace BaseballAPI.WebAPI.Controllers
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok($"{player.Name} was successfully updated!");
         }
-        //Delete
+        //Delete api/documentation
+        /// <summary>
+        /// This is used to delete a player by their id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreatePlayerService();
+            var player = service.GetPlayerById(id);
             if (!service.DeletePlayer(id))
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok($"{player.Name} was successfully deleted!");
         }
     }
 }
