@@ -581,5 +581,39 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.TeamController.Get">
+            <summary>
+            This will get all teams.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.TeamController.Get(System.Int32)">
+            <summary>
+            Thgis will get all teams by ID numbers.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.TeamController.Post(BaseballAPI.Models.TeamCreate)">
+            <summary>
+            This will post a teams information.
+            </summary>
+            <param name="team"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.TeamController.Put(BaseballAPI.Models.TeamModels.TeamEdit)">
+            <summary>
+            This will put changed information into the team you want to edit.
+            </summary>
+            <param name="team"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.TeamController.Delete(System.Int32)">
+            <summary>
+            This will delete a team.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
