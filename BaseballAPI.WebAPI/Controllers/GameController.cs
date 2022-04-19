@@ -20,6 +20,12 @@ namespace BaseballAPI.WebAPI.Controllers
             return gameService;
         }
 
+        
+        //Get api/documentation
+        /// <summary>
+        /// This will get all the games info in chronological order
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult GetAllGameInfo()
         {
             GameInfoService gameService = CreateGameInfoService();
@@ -28,12 +34,25 @@ namespace BaseballAPI.WebAPI.Controllers
 
         }
 
+        //Get api/documentation
+        /// <summary>
+        /// This will give a single game info by giving an existing id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult GetGameInfoById(int id)
         {
             GameInfoService gameService = CreateGameInfoService();
             var game = gameService.GetGameById(id);
             return Ok(game);
         }
+
+        //Get api/documentation
+        /// <summary>
+        /// This will display a team's game infos when they are the home team
+        /// </summary>
+        /// <param name="homeTeamId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GameInfo/homeTeamId", Name = "GetByHomeTeamId")]
         public IHttpActionResult GetGameInfoByHomeTeamId(int homeTeamId)
@@ -43,6 +62,12 @@ namespace BaseballAPI.WebAPI.Controllers
             return Ok(game);
         }
 
+        //Get api/documentation
+        /// <summary>
+        /// This will display a team's game infos when they are the away team
+        /// </summary>
+        /// <param name="awayTeamId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GameInfo/awayTeamId", Name = "GetByAwayTeamId")]
         public IHttpActionResult GetGameInfoByAwayTeamId(int awayTeamId)
@@ -52,6 +77,12 @@ namespace BaseballAPI.WebAPI.Controllers
             return Ok(game);
         }
 
+        //Post api/documentation
+        /// <summary>
+        /// This allow you to create a game; you will need two existing team ids
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
         public IHttpActionResult GamePost(GameCreate game)
         {
             if (!ModelState.IsValid)
@@ -63,6 +94,12 @@ namespace BaseballAPI.WebAPI.Controllers
             return Ok();
         }
 
+        //Put api/documentation
+        /// <summary>
+        /// This will allow you to update a game
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
         public IHttpActionResult PutGameInfo(GameEdit game)
         {
             if (!ModelState.IsValid)
@@ -75,6 +112,12 @@ namespace BaseballAPI.WebAPI.Controllers
             return Ok();
         }
 
+        //Delete api/documentation
+        /// <summary>
+        /// This will allow you to delete a game; just need existing game id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult DeleteGame(int id)
         {
             var gameService = CreateGameInfoService();
