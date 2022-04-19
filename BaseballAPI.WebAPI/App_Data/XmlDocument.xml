@@ -492,6 +492,54 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameController.GetAllGameInfo">
+            <summary>
+            This will get all the games info in chronological order
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameController.GetGameInfoById(System.Int32)">
+            <summary>
+            This will give a single game info by giving an existing id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameController.GetGameInfoByHomeTeamId(System.Int32)">
+            <summary>
+            This will display a team's game infos when they are the home team
+            </summary>
+            <param name="homeTeamId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameController.GetGameInfoByAwayTeamId(System.Int32)">
+            <summary>
+            This will display a team's game infos when they are the away team
+            </summary>
+            <param name="awayTeamId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameController.GamePost(BaseballAPI.Models.GameInfoModel.GameCreate)">
+            <summary>
+            This allow you to create a game; you will need two existing team ids
+            </summary>
+            <param name="game"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameController.PutGameInfo(BaseballAPI.Models.GameInfoModel.GameEdit)">
+            <summary>
+            This will allow you to update a game
+            </summary>
+            <param name="game"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameController.DeleteGame(System.Int32)">
+            <summary>
+            This will allow you to delete a game; just need existing game id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:BaseballAPI.WebAPI.Controllers.PlayerController.Get">
             <summary>
             This will get all players in the database.
@@ -502,7 +550,7 @@
             <summary>
             This will allow you to add a new player to the database.
             </summary>
-            <param name="player">String "name"</param>
+            <param name="player"></param>
             <returns></returns>
         </member>
         <member name="M:BaseballAPI.WebAPI.Controllers.PlayerController.GetById(System.Int32)">
