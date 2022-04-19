@@ -14,18 +14,35 @@ namespace BaseballAPI.WebAPI.Controllers
     [Authorize]
     public class TeamController : ApiController
     {
+        // Get api /documentation
+        /// <summary>
+        /// This will get all teams.
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
             TeamService teamService = CreateTeamService();
             var teams = teamService.GetTeams();
             return Ok(teams);
         }
+        // Get api /documentation
+        /// <summary>
+        /// Thgis will get all teams by ID numbers.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             TeamService teamService = CreateTeamService();
             var teams = teamService.GetTeamById(id);
             return Ok(teams);
         }
+        // Post api /documentation
+        /// <summary>
+        /// This will post a teams information.
+        /// </summary>
+        /// <param name="team"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(TeamCreate team)
         {
             if (!ModelState.IsValid)
@@ -38,6 +55,12 @@ namespace BaseballAPI.WebAPI.Controllers
 
             return Ok();
         }
+        // Put api /documentation
+        /// <summary>
+        /// This will put changed information into the team you want to edit.
+        /// </summary>
+        /// <param name="team"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(TeamEdit team)
         {
             if (!ModelState.IsValid)
@@ -50,6 +73,12 @@ namespace BaseballAPI.WebAPI.Controllers
 
             return Ok();
         }
+        // Delete api /documentation
+        /// <summary>
+        /// This will delete a team.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateTeamService();
