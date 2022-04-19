@@ -502,7 +502,7 @@
             <summary>
             This will allow you to add a new player to the database.
             </summary>
-            <param name="player">String "name"</param>
+            <param name="player"></param>
             <returns></returns>
         </member>
         <member name="M:BaseballAPI.WebAPI.Controllers.PlayerController.GetById(System.Int32)">
