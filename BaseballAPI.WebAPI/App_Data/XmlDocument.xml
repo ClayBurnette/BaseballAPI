@@ -492,6 +492,44 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameBattingStatController.Post(BaseballAPI.Models.GameBattingStatsModels.GameBattingStatCreate)">
+            <summary>
+            This will create a new batting stat log for a player in a specific game.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameBattingStatController.Get">
+            <summary>
+            This will get a list of all batting stat logs in the database.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameBattingStatController.Get(System.String,System.Int32)">
+            <summary>
+            This has 3 different search options depending on the keyword used.<br/>
+            Keyword "stat": Returns an individual listing of a game batting stat from the database.<br/>
+            Keyword "player": Returns a list of all stat logs for a specific player.<br/>
+            Keyword "game": Returns a list of all the stat logs recorded for an individual game.
+            </summary>
+            <param name="type"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameBattingStatController.Put(BaseballAPI.Models.GameBattingStatsModels.GameBattingStatEdit)">
+            <summary>
+            This allows you to update an existing batting stat log.
+            </summary>
+            <param name="stat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameBattingStatController.Delete(System.Int32)">
+            <summary>
+            This allows you to delete a recorded batting stat log.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:BaseballAPI.WebAPI.Controllers.GameController.GetAllGameInfo">
             <summary>
             This will get all the games info in chronological order
@@ -579,6 +617,15 @@
             This is used to delete a player by their id.
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.SeasonBattingStatController.Get(System.Int32,System.Int32)">
+            <summary>
+            This will return the season stats for an player using the player's ID.<br/>
+            To get the careet stats for a player, use '0' for the year.
+            </summary>
+            <param name="player"></param>
+            <param name="year"></param>
             <returns></returns>
         </member>
         <member name="M:BaseballAPI.WebAPI.Controllers.TeamController.Get">
