@@ -56,6 +56,18 @@ namespace BaseballAPI.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var playerService = new PlayerService();
+                var players = ctx.Players.Where(p => p.TeamId == teamId).ToArray();
+                foreach (Player player in players)
+                {
+                    playerService.DeletePlayer(player.PlayerId);
+                }
+                var gameService = new GameInfoService();
+                var games = ctx.Games.Where(g => g.HomeTeamID == teamId || g.AwayTeamID == teamId).ToArray();
+                foreach (GameInfo game in games)
+                {
+                    gameService.DeleteGame(game.GameId);
+                }
                 var entity =
                     ctx
                     .Teams
