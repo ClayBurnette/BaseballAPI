@@ -187,7 +187,8 @@
                 new GameInfo() { GameId = 23, HomeTeamID = 27, AwayTeamID = 3, HomeScore = 8, AwayScore = 0, Innings = 9, SeasonYear = 2022 },
                 new GameInfo() { GameId = 24, HomeTeamID = 27, AwayTeamID = 20, HomeScore = 2, AwayScore = 13, Innings = 9, SeasonYear = 2022 },
                 new GameInfo() { GameId = 25, HomeTeamID = 27, AwayTeamID = 20, HomeScore = 9, AwayScore = 8, Innings = 10, SeasonYear = 2022 },
-                new GameInfo() { GameId = 26, HomeTeamID = 27, AwayTeamID = 20, HomeScore = 2, AwayScore = 4, Innings = 9, SeasonYear = 2022 }
+                new GameInfo() { GameId = 26, HomeTeamID = 27, AwayTeamID = 20, HomeScore = 2, AwayScore = 4, Innings = 9, SeasonYear = 2022 },
+                new GameInfo() { GameId = 27, HomeTeamID = 7, AwayTeamID = 30, HomeScore = 2, AwayScore = 3, Innings = 9, SeasonYear = 2021 }
                 );
             context.GameBattingStats.AddOrUpdate(x => x.Id,
                new GameBattingStat() { Id = 1, PlayerId = 2, GameId = 1, AB = 2, R = 1, H = 1, RBI = 0, BB = 2, SO = 1, HR = 0, Double = 0, Triple = 0, SAC = 0, HBP = 0, SB = 0, CS = 0 },
@@ -217,7 +218,8 @@
                new GameBattingStat() { Id = 25, PlayerId = 5, GameId = 23, AB = 4, R = 1, H = 3, RBI = 2, BB = 0, SO = 1, HR = 0, Double = 1, Triple = 0, SAC = 0, HBP = 0, SB = 1, CS = 0 },
                new GameBattingStat() { Id = 26, PlayerId = 5, GameId = 24, AB = 4, R = 2, H = 3, RBI = 0, BB = 0, SO = 0, HR = 0, Double = 1, Triple = 0, SAC = 0, HBP = 0, SB = 0, CS = 0 },
                new GameBattingStat() { Id = 27, PlayerId = 5, GameId = 25, AB = 5, R = 2, H = 2, RBI = 1, BB = 1, SO = 1, HR = 0, Double = 1, Triple = 1, SAC = 0, HBP = 0, SB = 0, CS = 0 },
-               new GameBattingStat() { Id = 28, PlayerId = 5, GameId = 26, AB = 5, R = 0, H = 0, RBI = 0, BB = 0, SO = 0, HR = 0, Double = 0, Triple = 0, SAC = 0, HBP = 0, SB = 0, CS = 0 }
+               new GameBattingStat() { Id = 28, PlayerId = 5, GameId = 26, AB = 5, R = 0, H = 0, RBI = 0, BB = 0, SO = 0, HR = 0, Double = 0, Triple = 0, SAC = 0, HBP = 0, SB = 0, CS = 0 },
+               new GameBattingStat() { Id = 29, PlayerId = 1, GameId = 27, AB = 3, R = 2, H = 3, RBI = 2, BB = 1, SO = 0, HR = 2, Double = 0, Triple = 0, SAC = 0, HBP = 0, SB = 0, CS = 0 }
                 );
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
