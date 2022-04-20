@@ -10,16 +10,10 @@ namespace BaseballAPI.Services
 {
     public class PlayerService
     {
-        /*private readonly Guid _userId;
-        public PlayerService(Guid userid)
-        {
-            _userId = userid;
-        }*/
         public bool CreatePlayer(PlayerCreate model)
         {
             var entity = new Player()
             {
-                //OwnerId = _userId,
                 Name = model.Name,
                 School = model.School,
                 JerseyNumber = model.JerseyNumber,
@@ -94,7 +88,6 @@ namespace BaseballAPI.Services
                 entity.TeamId = model.TeamId;
                 entity.PlayerPosition = model.PlayerPosition;
                 return ctx.SaveChanges() == 1;
-
             }
         }
         public bool DeletePlayer(int playerId)

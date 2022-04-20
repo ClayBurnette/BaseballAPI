@@ -30,7 +30,6 @@ namespace BaseballAPI.Data
         public int TeamId { get; set; }
         public virtual Team Team { get; set; }
         
-
         /*public Player (int position, List<int> pos2)
         {
             PlayerPosition = (Position)position;
