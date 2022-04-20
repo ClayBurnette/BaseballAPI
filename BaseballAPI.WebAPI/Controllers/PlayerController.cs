@@ -17,7 +17,6 @@ namespace BaseballAPI.WebAPI.Controllers
         //Create
         private PlayerService CreatePlayerService()
         {
-            //var userId = Guid.Parse(User.Identity.GetUserId());
             var playerService = new PlayerService();
             return playerService;
         }
