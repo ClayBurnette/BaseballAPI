@@ -20,7 +20,9 @@ namespace BaseballAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        /*public bool CreateGameBattingStatXtreme(string[] allStats)
+        
+           //This method could be used to speed up the process of inputting data into the API
+           public bool CreateGameBattingStatXtreme(string[] allStats)
         {
             GameBattingStatCreate model = new GameBattingStatCreate(allStats);
             GameBattingStat entity = new GameBattingStat(model.PlayerId, model.GameId, model.AB, model.R, model.H, model.RBI, model.BB, model.SO, model.HR, model.Double, model.Triple, model.SAC, model.HBP, model.SB, model.CS);
@@ -29,7 +31,8 @@ namespace BaseballAPI.Services
                 ctx.GameBattingStats.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-        }*/
+        }
+        
         public IEnumerable<GameBattingStatListItem> GetAllGameBattingStats()
         {
             using (var ctx = new ApplicationDbContext())

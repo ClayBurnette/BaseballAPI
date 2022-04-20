@@ -28,7 +28,15 @@ namespace BaseballAPI.WebAPI.Controllers
             return Ok();
         }
 
-        /*public IHttpActionResult Post(string allStats)
+        // PostWithString Documentation
+        /// <summary>
+        /// PlayerId/GameId/AB/R/H/RBI/BB/SO/HR/2B/3B/SAC/HBP/SB/CS
+        /// </summary>
+        /// <param name="allStats"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("GameBattingStats/PostX", Name ="PostWithString")]
+           public IHttpActionResult PostWithString(string allStats)
         {
             string[] statArray = allStats.Split('/');
             if (statArray.Length != 15)
@@ -37,7 +45,7 @@ namespace BaseballAPI.WebAPI.Controllers
             if (!service.CreateGameBattingStatXtreme(statArray))
                 return InternalServerError();
             return Ok();
-        }*/
+        }
 
         // Get API Documentation
         /// <summary>
