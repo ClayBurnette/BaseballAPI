@@ -29,8 +29,8 @@
                         CS = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.GameInfo", t => t.GameId, cascadeDelete: true)
-                .ForeignKey("dbo.Player", t => t.PlayerId, cascadeDelete: true)
+                .ForeignKey("dbo.GameInfo", t => t.GameId)
+                .ForeignKey("dbo.Player", t => t.PlayerId)
                 .Index(t => t.PlayerId)
                 .Index(t => t.GameId);
             
@@ -39,8 +39,8 @@
                 c => new
                     {
                         GameId = c.Int(nullable: false, identity: true),
-                        TeamId1 = c.Int(nullable: false),
-                        TeamId2 = c.Int(nullable: false),
+                        HomeTeamID = c.Int(nullable: false),
+                        AwayTeamID = c.Int(nullable: false),
                         HomeScore = c.Int(nullable: false),
                         AwayScore = c.Int(nullable: false),
                         Innings = c.Double(nullable: false),
@@ -49,10 +49,10 @@
                     })
                 .PrimaryKey(t => t.GameId)
                 .ForeignKey("dbo.Team", t => t.Team_TeamId)
-                .ForeignKey("dbo.Team", t => t.TeamId2, cascadeDelete: false)
-                .ForeignKey("dbo.Team", t => t.TeamId1, cascadeDelete: false)
-                .Index(t => t.TeamId1)
-                .Index(t => t.TeamId2)
+                .ForeignKey("dbo.Team", t => t.AwayTeamID)
+                .ForeignKey("dbo.Team", t => t.HomeTeamID)
+                .Index(t => t.HomeTeamID)
+                .Index(t => t.AwayTeamID)
                 .Index(t => t.Team_TeamId);
             
             CreateTable(
@@ -64,8 +64,6 @@
                         TeamLocation = c.String(nullable: false),
                         TeamMascot = c.String(),
                         TeamStadium = c.String(),
-                        Wins = c.Int(nullable: false),
-                        Losses = c.Int(nullable: false),
                         Name = c.Int(nullable: false),
                         Location = c.Int(nullable: false),
                         Stadium = c.Int(nullable: false),
@@ -90,7 +88,7 @@
                         Team_TeamId = c.Int(),
                     })
                 .PrimaryKey(t => t.PlayerId)
-                .ForeignKey("dbo.Team", t => t.TeamId, cascadeDelete: false)
+                .ForeignKey("dbo.Team", t => t.TeamId)
                 .ForeignKey("dbo.Team", t => t.Team_TeamId)
                 .Index(t => t.TeamId)
                 .Index(t => t.Team_TeamId);
@@ -175,8 +173,8 @@
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.GameBattingStat", "PlayerId", "dbo.Player");
             DropForeignKey("dbo.GameBattingStat", "GameId", "dbo.GameInfo");
-            DropForeignKey("dbo.GameInfo", "TeamId1", "dbo.Team");
-            DropForeignKey("dbo.GameInfo", "TeamId2", "dbo.Team");
+            DropForeignKey("dbo.GameInfo", "HomeTeamID", "dbo.Team");
+            DropForeignKey("dbo.GameInfo", "AwayTeamID", "dbo.Team");
             DropForeignKey("dbo.Player", "Team_TeamId", "dbo.Team");
             DropForeignKey("dbo.Player", "TeamId", "dbo.Team");
             DropForeignKey("dbo.GameInfo", "Team_TeamId", "dbo.Team");
@@ -187,8 +185,8 @@
             DropIndex("dbo.Player", new[] { "Team_TeamId" });
             DropIndex("dbo.Player", new[] { "TeamId" });
             DropIndex("dbo.GameInfo", new[] { "Team_TeamId" });
-            DropIndex("dbo.GameInfo", new[] { "TeamId2" });
-            DropIndex("dbo.GameInfo", new[] { "TeamId1" });
+            DropIndex("dbo.GameInfo", new[] { "AwayTeamID" });
+            DropIndex("dbo.GameInfo", new[] { "HomeTeamID" });
             DropIndex("dbo.GameBattingStat", new[] { "GameId" });
             DropIndex("dbo.GameBattingStat", new[] { "PlayerId" });
             DropTable("dbo.IdentityUserLogin");

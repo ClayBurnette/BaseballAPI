@@ -13,7 +13,7 @@ namespace BaseballAPI.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202204131850208_initial"; }
+            get { return "202204201357125_initial"; }
         }
         
         string IMigrationMetadata.Source
