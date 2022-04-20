@@ -10,18 +10,10 @@ namespace BaseballAPI.Services
 {
     public class GameInfoService
     {
-        private readonly Guid _userId;
-
-        //public GameInfoService(Guid userId)
-       // {
-           // _userId = userId;
-       // }
-
         public bool CreateGameInfo(GameCreate game)
         {
             var gameEntity = new GameInfo()
             {
-                //OwnerId = _userId,
                 HomeTeamID = game.HomeTeamID,
                 AwayTeamID = game.AwayTeamID,
                 HomeScore = game.HomeScore,
@@ -42,14 +34,8 @@ namespace BaseballAPI.Services
         {
             using(var gameCTX = new ApplicationDbContext())
             {
-                var gameQuery =
-                    gameCTX
-                            .Games
-                            //.Where(g => g.OwnerId == _userId)
-                            .Select(
-                             g =>
-                                new GameListAll
-                                {
+                var gameQuery = gameCTX.Games.Select(g => new GameListAll
+                {
                                     GameId = g.GameId,
                                     HomeTeamID = g.HomeTeamID,
                                     AwayTeamID = g.AwayTeamID,
@@ -57,10 +43,8 @@ namespace BaseballAPI.Services
                                     AwayScore = g.AwayScore,
                                     Innings = g.Innings,
                                     SeasonYear = g.SeasonYear
-                                }
-
-                               );
-
+                }
+                );
                 return gameQuery.ToArray();
             }
         }
@@ -126,26 +110,20 @@ namespace BaseballAPI.Services
                 return gameEntity.ToArray();
             }
         }
-
-
-
-
         public bool UpdateGameInfo(GameEdit game)
         {
             using(var gameCTX = new ApplicationDbContext())
             {
-                var gameEntity =
-                   gameCTX
-                            .Games
-                            .Single(g => g.GameId == game.GameId);
+                var gameEntity = gameCTX.Games.Single(g => g.GameId == game.GameId);
+                {
 
-                gameEntity.HomeTeamID = game.HomeTeamID;
-                gameEntity.AwayTeamID = game.AwayTeamID;
-                gameEntity.HomeScore = game.HomeScore;
-                gameEntity.AwayScore = game.AwayScore;
-                gameEntity.Innings = game.Innings;
-                gameEntity.SeasonYear = game.SeasonYear;
-
+                    gameEntity.HomeTeamID = game.HomeTeamID;
+                    gameEntity.AwayTeamID = game.AwayTeamID;
+                    gameEntity.HomeScore = game.HomeScore;
+                    gameEntity.AwayScore = game.AwayScore;
+                    gameEntity.Innings = game.Innings;
+                    gameEntity.SeasonYear = game.SeasonYear;
+                }
                 return gameCTX.SaveChanges() == 1;
 
             }

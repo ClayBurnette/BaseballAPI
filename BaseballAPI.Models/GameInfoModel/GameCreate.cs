@@ -26,16 +26,7 @@ namespace BaseballAPI.Models.GameInfoModel
         [Required]
         public double Innings { get; set; }
 
-        public bool ExtraInnings
-        {
-            get
-            {
-                if(Innings > 9)
-                    return true;
-                return false;
-            }
-        }
-
+        
         [Required]
         public int SeasonYear { get; set; }
 

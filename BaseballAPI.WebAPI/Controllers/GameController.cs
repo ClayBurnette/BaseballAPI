@@ -15,12 +15,10 @@ namespace BaseballAPI.WebAPI.Controllers
     {
         private GameInfoService CreateGameInfoService()
         {
-           // var userId = Guid.Parse(User.Identity.GetUserId());
-            var gameService = new GameInfoService();
-            return gameService;
+           var gameService = new GameInfoService();
+           return gameService;
         }
 
-        
         //Get api/documentation
         /// <summary>
         /// This will get all the games info in chronological order
