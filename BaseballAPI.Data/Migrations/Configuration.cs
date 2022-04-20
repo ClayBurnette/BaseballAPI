@@ -151,12 +151,12 @@
              },
              new Player()
              {
-                 PlayerId =5,
+                 PlayerId = 5,
                  Name = "Wander Franco",
-                 DateOfBirth="03/01/2001",
+                 DateOfBirth = "03/01/2001",
                  School = "International",
                  PlayerPosition = Position.ShortStop,
-                 JerseyNumber =5,
+                 JerseyNumber = 5,
                  HomeTown = "Bani, Dominican Republic",
                  TeamId = 27
              }
