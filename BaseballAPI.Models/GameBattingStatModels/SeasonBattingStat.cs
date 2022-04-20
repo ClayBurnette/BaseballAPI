@@ -5,14 +5,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BaseballAPI.Models.GameBattingStatsModels
+namespace BaseballAPI.Models.GameBattingStatModels
 {
-    public class GameBattingStatDetail
-    {       
-        public int Id { get; set; }
+    public class SeasonBattingStat
+    {
         public int PlayerId { get; set; }
-        public int GameId { get; set; }
+        public int Season { get; set; }
         public string PlayerName { get; set; }
+        public decimal AVG
+        {
+            get
+            {
+                decimal avg = (decimal)H / (decimal)AB;
+                return Math.Round(avg, 3);
+            }
+        }
+        public decimal OBP
+        {
+            get
+            {
+                decimal numerator = H + BB + HBP;
+                decimal obp = (numerator) / PA;
+                return Math.Round(obp, 3);
+            }
+        }
+        public decimal SLG
+        {
+            get
+            {
+                decimal slg = (decimal)TB / (decimal)AB;
+                return Math.Round(slg, 3);
+            }
+        }
+        public decimal OPS
+        {
+            get
+            {
+                return OBP + SLG;
+            }
+        }
         public int AB { get; set; }
         public int R { get; set; }
         public int H { get; set; }
@@ -42,5 +73,14 @@ namespace BaseballAPI.Models.GameBattingStatsModels
         public int HBP { get; set; }
         public int SB { get; set; }
         public int CS { get; set; }
+        public int SBP
+        {
+            get
+            {
+                if (SB + CS == 0)
+                    return 0;
+                return 100*(SB / (SB + CS));
+            }
+        }
     }
 }

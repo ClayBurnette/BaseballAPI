@@ -10,22 +10,16 @@ namespace BaseballAPI.Services
 {
     public class PlayerService
     {
-        private readonly Guid _userId;
-        public PlayerService(Guid userid)
-        {
-            _userId = userid;
-        }
         public bool CreatePlayer(PlayerCreate model)
         {
             var entity = new Player()
             {
-                OwnerId = _userId,
                 Name = model.Name,
                 School = model.School,
-                JeseryNumber = model.JerseyNumber,
+                JerseyNumber = model.JerseyNumber,
                 DateOfBirth = model.DateOfBirth,
                 HomeTown = model.HomeTown,
-                PlayerPosition = (Position)model.PlayerPostition,
+                PlayerPosition = model.PlayerPostition,
                 TeamId = model.TeamId,
             };
             using(var ctx = new ApplicationDbContext())
@@ -38,12 +32,13 @@ namespace BaseballAPI.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Players.Where(e => e.OwnerId == _userId).Select(e => new PlayerListItem
+                var query = ctx.Players.Select(e => new PlayerListItem
                 {
                     PlayerId = e.PlayerId,
                     Name = e.Name,
-                    JeseryNumber = e.JeseryNumber,
-                    TeamId = e.TeamId
+                    JeseryNumber = e.JerseyNumber,
+                    TeamId = e.TeamId,
+                    PlayerPosition = e.PlayerPosition
                 }
                 );
                 return query.ToArray();
@@ -53,38 +48,60 @@ namespace BaseballAPI.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Players.Single(e => e.PlayerId == id && e.OwnerId == _userId);
+                var entity = ctx.Players.Single(e => e.PlayerId == id);
                 return
                     new PlayerDetail
                     {
                         PlayerId = entity.PlayerId,
                         Name = entity.Name,
                         Hometown = entity.HomeTown,
-                        JeseryNumber = entity.JeseryNumber,
+                        JeseryNumber = entity.JerseyNumber,
                         TeamId = entity.TeamId,
-                        DateOfBirth = entity.DateOfBirth
+                        DateOfBirth = entity.DateOfBirth,
+                        PlayerPosition = entity.PlayerPosition
                     };
+            }
+        }
+        public IEnumerable<PlayerListItem> GetPlayerByPosition(Position enumNum)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Players.Where(e => e.PlayerPosition == enumNum).Select(e => new PlayerListItem
+                {
+                    PlayerId = e.PlayerId,
+                    Name = e.Name,
+                    JeseryNumber = e.JerseyNumber,
+                    TeamId = e.TeamId,
+                    PlayerPosition = e.PlayerPosition
+                }
+                );
+                return query.ToArray();
             }
         }
         public bool UpdatePlayer(PlayerEdit model)
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Players.Single(e => e.PlayerId == model.PlayerId && e.OwnerId == _userId);
+                var entity = ctx.Players.Single(e => e.PlayerId == model.PlayerId);
                 entity.Name = model.Name;
-                entity.JeseryNumber = model.JeseryNumber;
+                entity.JerseyNumber = model.JeseryNumber;
                 entity.TeamId = model.TeamId;
-                entity.PlayerPosition = (Position)model.PlayerPosition;
+                entity.PlayerPosition = model.PlayerPosition;
                 return ctx.SaveChanges() == 1;
-
             }
         }
         public bool DeletePlayer(int playerId)
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Players.Single(e => e.PlayerId == playerId && e.OwnerId == _userId);
-                ctx.Players.Remove(entity);
+                var entity = ctx.GameBattingStats.Where(s => s.PlayerId == playerId).ToArray();
+                foreach(GameBattingStat stat in entity)
+                {
+                    ctx.GameBattingStats.Remove(stat);
+                    ctx.SaveChanges();
+                }
+                var entity2 = ctx.Players.Single(e => e.PlayerId == playerId);
+                ctx.Players.Remove(entity2);
                 return ctx.SaveChanges() == 1;
             }
         }

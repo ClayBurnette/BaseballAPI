@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BaseballAPI.Data;
 
 namespace BaseballAPI.Models.PlayerModels
 {
@@ -12,5 +13,6 @@ namespace BaseballAPI.Models.PlayerModels
         public string Name { get; set; }
         public int JeseryNumber { get; set; }
         public int TeamId { get; set; }
+        public Position PlayerPosition { get; set; }
     }
 }

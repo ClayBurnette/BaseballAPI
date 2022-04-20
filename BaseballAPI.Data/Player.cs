@@ -14,25 +14,22 @@ namespace BaseballAPI.Data
         [Key]
         public int PlayerId { get; set; }
         [Required]
-        public Guid OwnerId { get; set; }
-        [Required]
         public string Name { get; set; }
         [Required]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
         [Required]
         public string School { get; set; }
         [Required]
         public Position PlayerPosition { get; set; }
         public List<Position> SecondaryPositions { get; set; } = new List<Position>();
         [Required]
-        public int JeseryNumber { get; set; }
+        public int JerseyNumber { get; set; }
         [Required]
         public string HomeTown { get; set; }
         [ForeignKey(nameof(Team))]
         public int TeamId { get; set; }
         public virtual Team Team { get; set; }
         
-
         /*public Player (int position, List<int> pos2)
         {
             PlayerPosition = (Position)position;

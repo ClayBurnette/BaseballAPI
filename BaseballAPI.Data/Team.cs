@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -133,6 +134,69 @@ namespace BaseballAPI.Data
         [Display(Name = "Washington DC")]
         WashingtonDC = 30,
     }
+    public enum TeamStadium
+    {
+        [Display(Name = "Chase Field")]
+        ChaseField = 1,
+        [Display(Name = "Suntrust Park")]
+        SuntrustPark = 2,
+        [Display(Name = "Oriole Park At Camden Yards")]
+        OrioleParkAtCamdenYards = 3,
+        [Display(Name = "Fenway Park")]
+        FenwayPark = 4,
+        [Display(Name = "Guranteed Rate Field")]
+        GuranteedRateField = 5,
+        [Display(Name = "Wrigley Field")]
+        WrigleyField = 6,
+        [Display(Name = "Great American Ball Park")]
+        GreatAmericanBallPark = 7,
+        [Display(Name = "Progressive Field")]
+        ProgressiveField = 8,
+        [Display(Name = "Coors Field")]
+        CoorsField = 9,
+        [Display(Name = "Comerica Park")]
+        ComericaPark = 10,
+        [Display(Name = "Minute Maid Park")]
+        MinuteMaidPark = 11,
+        [Display(Name = "Kaufman Stadium")]
+        KaufmanStadium = 12,
+        [Display(Name = "Angels Stadium")]
+        AngelsStadium = 13,
+        [Display(Name = "Dodgers Stadium")]
+        DodgersStadium = 14,
+        [Display(Name = "Marlins Park")]
+        MarlinsPark = 15,
+        [Display(Name = "Miller Park")]
+        MillerPark = 16,
+        [Display(Name = "Target Field")]
+        TargetField = 17,
+        [Display(Name = "Yankee Stadium")]
+        YankeeStadium = 18,
+        [Display(Name = "Citi Field")]
+        CitiField = 19,
+        [Display(Name = "Ring Central Coliseum")]
+        RingCentralColiseum = 20,
+        [Display(Name = "Citizens Bank Park")]
+        CitizensBankPark = 21,
+        [Display(Name = "PNC Park")]
+        PNCPark = 22,
+        [Display(Name = "Petco Park")]
+        PetcoPark = 23,
+        [Display(Name = "Oracle Park")]
+        OraclePark = 24,
+        [Display(Name = "TMobile Park")]
+        TMobilePark = 25,
+        [Display(Name = "Busch Stadium")]
+        BuschStadium = 26,
+        [Display(Name = "Tropicana Field")]
+        TropicanaField = 27,
+        [Display(Name = "Globe Life Field")]
+        GlobeLifeField = 28,
+        [Display(Name = "Rogers Centre")]
+        RogersCentre = 29,
+        [Display(Name = "Nationals Park")]
+        NationalsPark = 30,
+    }
     public enum TeamMascot
     {
         [Display(Name = "Baxter And Bobcat")]
@@ -196,91 +260,48 @@ namespace BaseballAPI.Data
         [Display(Name = "The Presidents")]
         ThePresidents = 30,
     }
-    public enum TeamStadium
-    {
-        [Display(Name = "Chase Field")]
-        ChaseField = 1,
-        [Display(Name = "Suntrust Park")]
-        SuntrustPark = 2,
-        [Display(Name = "Oriole Park At Camden Yards")]
-        OrioleParkAtCamdenYards = 3,
-        [Display(Name = "Fenway Park")]
-        FenwayPark = 4,
-        [Display(Name = "Guranteed Rate Field")]
-        GuranteedRateField = 5,
-        [Display(Name = "Wrigley Field")]
-        WrigleyField = 6,
-        [Display(Name = "Great American Ball Park")]
-        GreatAmericanBallPark = 7,
-        [Display(Name = "Progressive Field")]
-        ProgressiveField = 8,
-        [Display(Name = "Coors field")]
-        CoorsField = 9,
-        [Display(Name = "Comerica Park")]
-        ComericaPark = 10,
-        [Display(Name = "Minute Maid Park")]
-        MinuteMaidPark = 11,
-        [Display(Name = "Kaufman Stadium")]
-        KaufmanStadium = 12,
-        [Display(Name = "Angels Stadium")]
-        AngelsStadium = 13,
-        [Display(Name = "Dodgers Stadium")]
-        DodgersStadium = 14,
-        [Display(Name = "Marlins Park")]
-        MarlinsPark = 15,
-        [Display(Name = "Miller Park")]
-        MillerPark = 16,
-        [Display(Name = "Target Field")]
-        TargetField = 17,
-        [Display(Name = "Yankee Stadium")]
-        YankeeStadium = 18,
-        [Display(Name = "Citi Field")]
-        CitiField = 19,
-        [Display(Name = "Ring Central Coliseum")]
-        RingCentralColiseum = 20,
-        [Display(Name = "Citizens Bank Park")]
-        CitizensBankPark = 21,
-        [Display(Name = "PNC Park")]
-        PNCPark = 22,
-        [Display(Name = "Petco Park")]
-        PetcoPark = 23,
-        [Display(Name = "Oracle Park")]
-        OraclePark = 24,
-        [Display(Name = "TMobile Park")]
-        TMobilePark = 25,
-        [Display(Name = "Busch Stadium")]
-        BuschStadium = 26,
-        [Display(Name = "Tropicana Field")]
-        TropicanaField = 27,
-        [Display(Name = "Globe Life Field")]
-        GlobeLifeField = 28,
-        [Display(Name = "Rogers Centre")]
-        RogersCentre = 29,
-        [Display(Name = "Nationals Park")]
-        NationalsPark = 30,
-    }
     public class Team
     {
         public Team() { }
         [Key]
         public int TeamId { get; set; }
         [Required]
-        public Guid OwnerId { get; set; }
-        [Required]
         public string TeamName { get; set; }
         [Required]
         public string TeamLocation { get; set; }
         public string TeamMascot { get; set; }
         public string TeamStadium { get; set; }
-        public int Wins { get; set; }
-        public int Losses { get; set; }
+        public int Wins
+        {
+            get
+            {
+                int wins = Games.Where(w => w.HomeTeamID == TeamId && w.HomeScore > w.AwayScore/* || w.AwayTeamID == TeamId && w.AwayScore > w.HomeScore*/).Count();
+                int winstwo = Games.Where(w => w.AwayTeamID == TeamId && w.AwayScore > w.HomeScore).Count();
+                return wins+winstwo;
+            }
+        }
+        public int Losses
+        {
+            get
+            {
+                int losses = Games.Where(l => l.HomeTeamID == TeamId && l.HomeScore > l.AwayScore || l.AwayTeamID == TeamId && l.AwayScore > l.HomeScore).Count();
+                return losses;
+            }
+        }
         public TeamName Name { get; set; }
         public TeamLocation Location { get; set; }
-        public TeamMascot Mascot { get; set; }
         public TeamStadium Stadium { get; set; }
+        public TeamMascot Mascot { get; set; }
         public virtual List<Player> Players { get; set; } = new List<Player>();
         public virtual List<GameInfo> Games { get; set; } = new List<GameInfo>();
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
+        public Team(TeamName name, TeamLocation location, TeamStadium stadium, TeamMascot mascot)
+        {
+            Name = name;
+            Location = location;
+            Stadium = stadium;
+            Mascot = mascot;
+        }
     }
 }

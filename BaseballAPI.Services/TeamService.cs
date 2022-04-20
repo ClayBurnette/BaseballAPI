@@ -11,23 +11,21 @@ namespace BaseballAPI.Services
 {
     public class TeamService
     {
-        private readonly Guid _userId;
+        /*private readonly Guid _userId;
         public TeamService(Guid userId)
         {
             _userId = userId;
-        }
+        }*/
         public bool CreateTeam(TeamCreate model)
         {
             var entity =
                 new Team()
                 {
-                    OwnerId = _userId,
+                    //OwnerId = _userId,
                     TeamName = model.TeamName,
                     TeamMascot = model.TeamMascot,
                     TeamLocation = model.TeamLocation,
                     TeamStadium = model.TeamStadium,
-                    Wins = model.Wins,
-                    Losses = model.Losses,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
@@ -43,15 +41,13 @@ namespace BaseballAPI.Services
                 var entity =
                     ctx
                     .Teams
-                    .Single(e => e.TeamId == model.TeamId && e.OwnerId == _userId);
+                    .Single(e => e.TeamId == model.TeamId /*&& e.OwnerId == _userId*/);
 
                 entity.TeamId = model.TeamId;
                 entity.TeamName = model.TeamName;
                 entity.TeamLocation = model.TeamLocation;
                 entity.TeamStadium = model.TeamStadium;
                 entity.TeamMascot = model.TeamMascot;
-                entity.Wins = model.Wins;
-                entity.Losses = model.Losses;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -60,10 +56,22 @@ namespace BaseballAPI.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var playerService = new PlayerService();
+                var players = ctx.Players.Where(p => p.TeamId == teamId).ToArray();
+                foreach (Player player in players)
+                {
+                    playerService.DeletePlayer(player.PlayerId);
+                }
+                var gameService = new GameInfoService();
+                var games = ctx.Games.Where(g => g.HomeTeamID == teamId || g.AwayTeamID == teamId).ToArray();
+                foreach (GameInfo game in games)
+                {
+                    gameService.DeleteGame(game.GameId);
+                }
                 var entity =
                     ctx
                     .Teams
-                    .Single(e => e.TeamId == teamId && e.OwnerId == _userId);
+                    .Single(e => e.TeamId == teamId /*&& e.OwnerId == _userId*/);
 
                 ctx.Teams.Remove(entity);
 
@@ -77,7 +85,7 @@ namespace BaseballAPI.Services
                 var entity =
                     ctx
                     .Teams
-                    .Single(e => e.TeamId == id && e.OwnerId == _userId);
+                    .Single(e => e.TeamId == id /*&& e.OwnerId == _userId*/);
                 return
                     new TeamDetail
                     {
@@ -86,8 +94,8 @@ namespace BaseballAPI.Services
                         TeamLocation = entity.TeamLocation,
                         TeamStadium = entity.TeamStadium,
                         TeamMascot = entity.TeamMascot,
-                        Wins = entity.Wins,
-                        Losses = entity.Losses,
+                        Wins = ctx.Games.Where(w => w.HomeTeamID == entity.TeamId && w.HomeScore > w.AwayScore || w.AwayTeamID == entity.TeamId && w.AwayScore > w.HomeScore).Count(),
+                        Losses = ctx.Games.Where(l => l.HomeTeamID == entity.TeamId && l.HomeScore < l.AwayScore || l.AwayTeamID == entity.TeamId && l.AwayScore < l.HomeScore).Count(),
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
                     };
@@ -100,14 +108,16 @@ namespace BaseballAPI.Services
                 var query =
                     ctx
                     .Teams
-                    .Where(e => e.OwnerId == _userId)
+                    //.Where(e => e.OwnerId == _userId)
                     .Select(e => new TeamListItem
                     {
                         TeamId = e.TeamId,
-                        Name = e.Name,
-                        Location = e.Location,
-                        Stadium = e.Stadium,
-                        Mascot = e.Mascot,
+                        Name = e.TeamName,
+                        Wins = ctx.Games.Where(w => w.HomeTeamID == e.TeamId && w.HomeScore > w.AwayScore || w.AwayTeamID == e.TeamId && w.AwayScore > w.HomeScore).Count(),
+                        Losses = ctx.Games.Where(l => l.HomeTeamID == e.TeamId && l.HomeScore < l.AwayScore || l.AwayTeamID == e.TeamId && l.AwayScore < l.HomeScore).Count(),
+                        Location = e.TeamLocation,
+                        Stadium = e.TeamStadium,
+                        Mascot = e.TeamMascot,
                         CreatedUtc = e.CreatedUtc
                     }
             );
