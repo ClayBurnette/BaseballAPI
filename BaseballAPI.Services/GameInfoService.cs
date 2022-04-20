@@ -11,7 +11,7 @@ namespace BaseballAPI.Services
     public class GameInfoService
     {
         private readonly Guid _userId;
-
+        public GameInfoService() { }
         public GameInfoService(Guid userId)
         {
             _userId = userId;
