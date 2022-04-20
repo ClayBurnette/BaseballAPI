@@ -499,6 +499,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:BaseballAPI.WebAPI.Controllers.GameBattingStatController.PostWithString(System.String)">
+            <summary>
+            PlayerId/GameId/AB/R/H/RBI/BB/SO/HR/2B/3B/SAC/HBP/SB/CS
+            </summary>
+            <param name="allStats"></param>
+            <returns></returns>
+        </member>
         <member name="M:BaseballAPI.WebAPI.Controllers.GameBattingStatController.Get">
             <summary>
             This will get a list of all batting stat logs in the database.
