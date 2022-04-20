@@ -12,10 +12,10 @@ namespace BaseballAPI.Services
     {
         private readonly Guid _userId;
 
-        public GameInfoService(Guid userId)
-        {
-            _userId = userId;
-        }
+        //public GameInfoService(Guid userId)
+       // {
+           // _userId = userId;
+       // }
 
         public bool CreateGameInfo(GameCreate game)
         {
@@ -69,10 +69,7 @@ namespace BaseballAPI.Services
         {
             using(var gameCTX = new ApplicationDbContext())
             {
-                var gameEntity =
-                    gameCTX
-                            .Games
-                            .Single(g => g.GameId == id);
+                var gameEntity = gameCTX.Games.Single(g => g.GameId == id);
                 return
                     new GameDetail
                     {
@@ -87,49 +84,46 @@ namespace BaseballAPI.Services
             }
         }
 
-        public GameDetail GetGameByHomeTeamId(int homeTeamId)
+        public IEnumerable<GameDetail> GetGameByHomeTeamId(int homeTeamId)
         {
             using (var gameCTX = new ApplicationDbContext())
             {
-                var gameEntity =
-                    gameCTX
-                            .Games
-                            .Single(g => g.HomeTeamID == homeTeamId);
-                return
-                    new GameDetail
-                    {
-                        GameId = gameEntity.GameId,
-                        HomeTeamID = gameEntity.HomeTeamID,
-                        AwayTeamID = gameEntity.AwayTeamID,
-                        HomeScore = gameEntity.HomeScore,
-                        AwayScore = gameEntity.AwayScore,
-                        Innings = gameEntity.Innings,
-                        SeasonYear = gameEntity.SeasonYear
+                var gameEntity = gameCTX.Games.Where(g => g.HomeTeamID == homeTeamId).Select(g => new GameDetail
 
-                    };
+                {
+                    GameId = g.GameId,
+                    HomeTeamID = g.HomeTeamID,
+                    AwayTeamID = g.AwayTeamID,
+                    HomeScore = g.HomeScore,
+                    AwayScore = g.AwayScore,
+                    Innings = g.Innings,
+                    SeasonYear = g.SeasonYear
+
+                }
+                );
+                return gameEntity.ToArray();
+
             }
         }
 
-        public GameDetail GetGameByAwayTeamId(int awayTeamId)
+        public IEnumerable<GameDetail> GetGameByAwayTeamId(int awayTeamId)
         {
             using (var gameCTX = new ApplicationDbContext())
             {
-                var gameEntity =
-                    gameCTX
-                            .Games
-                            .Single(g => g.AwayTeamID == awayTeamId);
-                return
-                    new GameDetail
-                    {
-                        GameId = gameEntity.GameId,
-                        HomeTeamID = gameEntity.HomeTeamID,
-                        AwayTeamID = gameEntity.AwayTeamID,
-                        HomeScore = gameEntity.HomeScore,
-                        AwayScore = gameEntity.AwayScore,
-                        Innings = gameEntity.Innings,
-                        SeasonYear = gameEntity.SeasonYear
+                var gameEntity = gameCTX.Games.Where(g => g.AwayTeamID == awayTeamId).Select(g => new GameDetail
 
-                    };
+                {
+                     GameId = g.GameId,
+                     HomeTeamID = g.HomeTeamID,
+                     AwayTeamID = g.AwayTeamID,
+                     HomeScore = g.HomeScore,
+                     AwayScore = g.AwayScore,
+                     Innings = g.Innings,
+                     SeasonYear = g.SeasonYear
+
+                }
+                );
+                return gameEntity.ToArray();
             }
         }
 

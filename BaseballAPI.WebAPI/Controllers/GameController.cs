@@ -15,8 +15,8 @@ namespace BaseballAPI.WebAPI.Controllers
     {
         private GameInfoService CreateGameInfoService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var gameService = new GameInfoService(userId);
+           // var userId = Guid.Parse(User.Identity.GetUserId());
+            var gameService = new GameInfoService();
             return gameService;
         }
 
