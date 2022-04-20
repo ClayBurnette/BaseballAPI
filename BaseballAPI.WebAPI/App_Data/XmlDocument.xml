@@ -508,9 +508,9 @@
         <member name="M:BaseballAPI.WebAPI.Controllers.GameBattingStatController.Get(System.String,System.Int32)">
             <summary>
             This has 3 different search options depending on the keyword used.<br/>
-            Keyword "stat": Returns an individual listing of a game batting stat from the database.<br/>
-            Keyword "player": Returns a list of all stat logs for a specific player.<br/>
-            Keyword "game": Returns a list of all the stat logs recorded for an individual game.
+            STAT: Returns an individual listing of a game batting stat from the database.<br/>
+            PLAYER: Returns a list of all stat logs for a specific player.<br/>
+            GAME: Returns a list of all the stat logs recorded for an individual game.
             </summary>
             <param name="type"></param>
             <param name="id"></param>
