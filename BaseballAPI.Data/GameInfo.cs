@@ -13,10 +13,7 @@ namespace BaseballAPI.Data
         [Key]
         public int GameId { get; set; }
 
-        //[Required]
-        //public Guid OwnerId { get; set; }
-
-        [ForeignKey(nameof(HomeTeam))]
+       [ForeignKey(nameof(HomeTeam))]
         public int HomeTeamID { get; set; }
         public virtual Team HomeTeam { get; set; }
 
@@ -37,8 +34,6 @@ namespace BaseballAPI.Data
 
         [Required]
         public int SeasonYear { get; set; }
-
-        
 
         public bool ExtraInnings
         {
